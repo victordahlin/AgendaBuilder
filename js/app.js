@@ -3,9 +3,10 @@ $(function() {
 	//window.stage = "starter";
 	
 	//We instantiate our model
+	var model = new Activity();
 	
 	// Views
-
+	var dragdrop = new DragDrop($("#container"),model);
 
 	// Controllers
 });
