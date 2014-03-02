@@ -3,7 +3,7 @@ body {
 	padding: 50px 100px;
 }
 
-div#container {
+div#container { 
 }
 
 div#activity { width: 100px; height: 100px; background: red; }
