@@ -1,23 +1,71 @@
 body {
 	margin:0;
-	padding: 50px 100px;
+	padding: 50px 50px;
 }
 
-div#container { 
+div#container {
 }
 
-div#activity { width: 100px; height: 100px; background: red; }
+div#addActivityButton, div#addDayButton {
+	border:2px solid #006600;
+	background-color: #66CC00;
+	text-align: center;
+	font-weight: bold;
+	color:#FFFFFF;
+}
+
+div#addActivityButton {
+	margin-left: 10px;
+	margin-bottom: 5px;
+	width: 225px;
+	height: 25px;
+}
+
+div#activity { 
+	width: 200px; 
+	height: 25px; 
+	background: red; 
+	color:#000;
+	text-align: center;
+	margin:5px 25px;
+}
 
 div#addActivity {
-	width: 300px;
-	height:300px;
+	width: 250px;
+	height:500px;
 	float: left;
-	border:2px dotted red;
+	border:2px dashed #888888;
+}
+
+div#addDayInfo {
+	/* border:1px solid red; */
+	width: 225px;
+	height: 70px;
+	margin-left: 325px;
+	margin-bottom: 20px;
+}
+
+div#addDayStartTimeBox {
+	border:2px solid #787878;
+	margin-right: 90px;
+	padding-left: 10px;
+	padding-right: 10px;
+	float:right;
 }
 
 div#addDay {
-	width: 300px;
-	height:300px;
+	width: 250px;
+	height:400px;
 	float:left;
-	border:2px dotted blue;
+	border:2px dashed #888888;
+	margin-left: 50px;
+}
+
+div#addDayButton {
+	width: 150px;
+	height: 100px;
+	padding:25px;
+	float:left;
+	margin-left: 100px;
+	margin-top: 150px;
 }
