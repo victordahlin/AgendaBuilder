@@ -1,12 +1,7 @@
 var DragDrop = function (container,model) {
 
 	// Drag anywhere on screen
-	$( "#activity" ).draggable();
-	
-	// If user drop inside div and prevent select again
-	$( "#addDay" ).droppable({
-		drop: function( event, ui ) {
-			event.defaultPrevented();
-		}
-	});
+	this.activity = container.find("#activity");
+	this.addDay = container.find("#addDay");
+	this.addDayButton = container.find("#addDayButton");
 }

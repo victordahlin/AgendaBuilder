@@ -13,4 +13,5 @@ $(function() {
 	// Controllers
 	var activitiesController = new ActivitiesController(activities,model);
 	var addActivityController = new AddActivityController(addActivity,model);
+	var dragdropcontroller = new DragDropController(dragdrop,model);
 });
