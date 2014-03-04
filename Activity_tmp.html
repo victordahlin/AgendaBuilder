@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenda Builder</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+ 	
+<button type="button" id="newActivity">Add activity</button> 
+
+<div id="container" class="row">
+ 	<div id="activities">
+		
+		<div id="activity">Hej</div>
+	</div>
+	<div id="addDay"></div>
+</div>
+
+
+<div id="popup">
+	<form id="addActivityForm">
+		<input type="text" name="name" placeholder="Name"/><br/>
+		<input type="text" name="length" placeholder="Length"/>min<br/>
+		<select id="type">
+			<option value="" disabled selected>Type</option>			
+			<option value="presentation">Presentation</option>
+			<option value="discussion">Discussion</option>
+			<option value="groupWork">Group Work</option>
+			<option value="break">Break</option>
+		</select>
+		<br/>
+		<textarea id="description" rows="10" placeholder="Description"></textarea><br/>
+		<input type="submit" id="cancelActivity" value="Cancel">
+		<input type="submit" id="saveActivity" value="Save">
+	</form>
+</div>
+
+
+<!-- jQuery -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+<!-- The application JavaScript code -->
+<script type="text/javascript" src="js/model/Model.js"></script>
+<script type="text/javascript" src="js/view/DragDrop.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+
+<script type="text/javascript" src="js/view/Activities.js"></script>
+<script type="text/javascript" src="js/view/ActivitiesController.js"></script>
+
+<script type="text/javascript" src="js/view/AddActivity.js"></script>
+<script type="text/javascript" src="js/view/AddActivityController.js"></script>
+</body>
+</html>

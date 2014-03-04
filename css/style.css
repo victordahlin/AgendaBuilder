@@ -8,7 +8,7 @@ div#container {
 
 div#activity { width: 100px; height: 100px; background: red; }
 
-div#addActivity {
+div#activities {
 	width: 300px;
 	height:300px;
 	float: left;
@@ -20,4 +20,15 @@ div#addDay {
 	height:300px;
 	float:left;
 	border:2px dotted blue;
+}
+
+textarea {
+	resize:none;
+}
+
+#cancelActivity {
+	background-color:red;
+}
+#saveActivity {
+	background-color:green;
 }
