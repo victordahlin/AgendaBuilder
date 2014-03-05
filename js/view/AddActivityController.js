@@ -4,6 +4,7 @@ var AddActivityController = function(view, model) {
 		function(){
 			$("#popup").hide();	
 			$("#activities").show();
+			console.log("cancel");
 
 		}
 	);
@@ -19,6 +20,7 @@ var AddActivityController = function(view, model) {
 			model.addParkedActivity(act);
 			$("#popup").hide();
 			$("#activities").show();
+			console.log("save");
 		}
 	);
 	

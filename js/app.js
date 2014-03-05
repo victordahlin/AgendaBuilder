@@ -8,7 +8,7 @@ $(function() {
 	// Views
 	var dragdrop = new DragDrop($("#container"),model);
 	var activities = new Activities($("#activities"),model);
-	var addActivity = new AddActivity($("#addActivity"),model);
+	var addActivity = new AddActivity($("#popup"),model);
 
 	// Controllers
 	var activitiesController = new ActivitiesController(activities,model);
