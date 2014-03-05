@@ -167,13 +167,17 @@ function Model(){
 		} else {
 			this.parkedActivities.push(activity);
 		}
-		this.notifyObservers();
+		this.notifyObservers(parkedActivities);
 	}
 	
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity){
 		this.parkedActivities.push(activity);
 		this.notifyObservers();
+	};
+
+	this.getParkedActivities = function(activity){
+		return this.parkedActivities;
 	};
 	
 	// remove an activity on provided position from parked activites 

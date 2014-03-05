@@ -3,7 +3,7 @@ $(function() {
 	//window.stage = "starter";
 	
 	//We instantiate our model
-	var model = new Activity();
+	var model = new Model();
 	
 	// Views
 	var dragdrop = new DragDrop($("#container"),model);
