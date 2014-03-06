@@ -2,15 +2,15 @@ var Activities = function (container,model) {
 
 	this.newActivity = container.find("#addActivityButton");
 	var activities = $(container.find("#activitiesContainer"));
+	//this.activity = container.find(".activityObject");
 
 	var array = model.getParkedActivities();
 	this.fillActivities = function(){
 		activities.empty();
 		for( var i = 0; i < array.length; i++ ) {
-			var div = $("<div>");
+			var div = $("<li>");
 			var timeElement = $("<div>");
 			var nameElement = $("<div>");
-
 
 			div.attr("id","activity");
 			div.addClass("row");
@@ -41,5 +41,6 @@ var Activities = function (container,model) {
 	model.addObserver(this);
 	this.update = function(arg){
 		this.fillActivities();
+		this.activity = container.find(".activityObject");
 	}
 }

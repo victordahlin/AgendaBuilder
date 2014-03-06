@@ -1,5 +1,15 @@
 var ActivitiesController = function(view, model) {
 	
+	// Drag to dayActivies and restore if else were
+	this.dragActivity = function() {
+		view.activity.draggable({
+			helper: 'clone',
+			revert: "invalid",
+			connectToSortable: "#dayActivity"
+		});
+	}
+
+
 	$("#popup").hide();
 
 	view.newActivity.click(
@@ -14,5 +24,8 @@ var ActivitiesController = function(view, model) {
 		}
 	);
 	
-	
+	model.addObserver(this);
+	this.update = function(arg){
+		this.dragActivity();
+	}
 }
