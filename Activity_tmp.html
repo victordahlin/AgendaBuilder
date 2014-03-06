@@ -8,127 +8,48 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
-<style type="text/css">
-
-#addActivityButton{
-	border:2px solid #006600;
-	background-color: #66CC00;
-	font-weight: bold;
-	color:#FFFFFF;
-	margin-bottom: 5px;
-	margin-left: 0px;
-	width: 220px;
-}
-div#activity { 
-	width: 230px; 
-	height: 27px; 
-	color:#000;
-	margin:0px;
-	padding: 0px
-}
-div#activityTime{
-	padding: 0 0 0 10px; 
-	margin:0;
-}
-div#activityName{
-	height:25px;
-	text-align: left;
-	padding: 0 0 0 5px;
-	color:#FFFFFF;
-	font-weight: bold;
-}
-.Presentation {
-	border:2px solid #527ACC;
-	background-color: #E0EBFF;
-}
-.Discussion{
-	border:2px solid #799679;
-	background-color: #D6EAD6;
-}
-.Break {
-	border:2px solid #CCCC52;
-	background-color: yellow;
-}
-.Group {
-	border:2px solid #991F00;
-	background-color: #FFD6CC;
-}
-
-div#activitiesContainer {
-	width: 250px;
-	height:500px;
-	border:2px dashed #888888;
-}
-textarea {
-	resize:none;
-}
-
-#saveActivity {
-	border:2px solid #006600;
-	background-color: #66CC00;
-	font-weight: bold;
-	color:#FFFFFF;
-}
-#cancelActivity{
-	border:2px solid #802828;
-	background-color: #FF5050;
-	font-weight: bold;
-	color:#FFFFFF;
-}
-#name{
-	width:160px;
-	margin-top: 20px;
-	margin-bottom: 20px
-}
-#length{
-	width:130px;
-	margin-bottom: 20px
-}
-#typeid{
-	width:160px;
-	margin-bottom: 20px
-}
-#description{
-	width:160px;
-	margin-bottom: 20px
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
-<div id="activities">
-	<div id="addButtonContainer" class="row">
-		<div class="col-md-2 col-md-offset-1">
-			<button id="addActivityButton">+Add activity</button>
+
+<div id="container" class="row">
+	<div id="activities" class="col-md-2">
+		<div id="addButtonContainer" class="row">
+			<button id="addActivityButton">+Add activity</button>	
+		</div>
+
+		<div class="row">
+			<div id="activitiesContainer">
+			</div>
+		</div>
+	</div>
+	<div id="popup" class="col-md-2">
+		<input type="text" id="name" placeholder="Name" required/><br/>
+		<input type="text" id="length" placeholder="Length"/> min<br/>
+		<select id="typeid">
+			<option value="" disabled selected>Type</option>			
+			<option value="0">Presentation</option>
+			<option value="1">Group Work</option>
+			<option value="2">Discussion</option>
+			<option value="3">Break</option>
+		</select>
+		<br/>
+		<textarea id="description" rows="10" placeholder="Description"></textarea><br/>
+		<button id="cancelActivity" value="Cancel">Cancel</button>
+		<button id="saveActivity" value="Save">Save</button>
+	</div>
+	<div id="dayContainer" class="col-md-2">
+		<div id="addDayInfo">
+			<div id="addDayStartTime">Start time:<div id="addDayStartTimeBox">08:00</div></div>
+			<div id="addDayEndTime">End time:</div>
+			<div id="addDayTotalLength">Total length:</div>		
 		</div>		
+		 <ul id="dayActivity"></ul>
+	
 	</div>
-
-	<div class="row">
-		<div id="activitiesContainer" class="col-md-2 col-md-offset-1">
-		</div>
-	</div>
+	<div id="addDayButton">+Add a day</div>
 </div>
-<div id="popup">
-	<div class="row">
-		<div class="col-md-2 col-md-offset-1">
-			<input type="text" id="name" placeholder="Name" required/><br/>
-			<input type="text" id="length" placeholder="Length"/> min<br/>
-			<select id="typeid">
-				<option value="" disabled selected>Type</option>			
-				<option value="0">Presentation</option>
-				<option value="1">Group Work</option>
-				<option value="2">Discussion</option>
-				<option value="3">Break</option>
-			</select>
-			<br/>
-			<textarea id="description" rows="10" placeholder="Description"></textarea><br/>
-			<button id="cancelActivity" value="Cancel">Cancel</button>
-			<button id="saveActivity" value="Save">Save</button>
-		</div>
-	</div>
-</div>
-
-
 
 
 

@@ -6,7 +6,7 @@ body {
 div#container {
 }
 
-div#addActivityButton, div#addDayButton {
+div#addDayButton {
 	border:2px solid #006600;
 	background-color: #66CC00;
 	text-align: center;
@@ -14,31 +14,24 @@ div#addActivityButton, div#addDayButton {
 	color:#FFFFFF;
 }
 
-div#addActivityButton {
-	margin-left: 10px;
-	margin-bottom: 5px;
-	width: 225px;
-	height: 25px;
-}
 
 ul#addActivity, ul#dayActivity {
 	list-style-type: none;
 }
 
-li#activity { 
+/*li#activity { 
 	width: 200px; 
 	height: 25px; 
 	background: red; 
 	color:#000;
 	text-align: center;
-}
+}*/
 
 div#dayContainer {
 	/* border:1px solid red; */
 	width:auto;
 	height: 500px;
-	float:left;
-	margin-left: 50px;
+
 }
 
 ul#addActivity {
@@ -81,15 +74,103 @@ div#addDayButton {
 	margin-top: 250px;
 }
 
+/*  ADDACTIVITY *************************************************/
+
+div#activities {
+	width: auto;
+	height: auto;
+}
+div#activitiesContainer {
+	width: 250px;
+	height: 465px;
+	border: 2px dashed #888888;
+	overflow-y: scroll; 
+}
+
+#addActivityButton{
+	border:2px solid #006600;
+	background-color: #66CC00;
+	font-weight: bold;
+	color:#FFFFFF;
+	margin-bottom: 5px;
+	margin-left: 0px;
+	width: 220px;
+}
+div#activity { 
+	width: auto; 
+	height: 27px; 
+	color:#000;
+	margin:0px;
+	padding: 0px
+}
+div#activityTime{
+	padding: 0 0 0 10px; 
+	margin:0;
+}
+div#activityName{
+	height:25px;
+	text-align: left;
+	padding: 0 0 0 5px;
+	color:#FFFFFF;
+	font-weight: bold;
+}
+.Presentation {
+	border:2px solid #527ACC;
+	background-color: #E0EBFF;
+}
+.Discussion{
+	border:2px solid #799679;
+	background-color: #D6EAD6;
+}
+.Break {
+	border:2px solid #CCCC52;
+	background-color: yellow;
+}
+.Group {
+	border:2px solid #991F00;
+	background-color: #FFD6CC;
+}
+
+
 textarea {
 	resize:none;
 }
 
-#cancelActivity {
-	background-color:red;
+/*  ADDACTIVITY POPUP ***********************************************************/
+
+div#popup {
+	width: 250px;
+	height: 500px;
 }
+
 #saveActivity {
-	background-color:green;
-	margin-left: 100px;
-	margin-top: 150px;
+	border:2px solid #006600;
+	background-color: #66CC00;
+	font-weight: bold;
+	color:#FFFFFF;
+	margin-left: 20px
+}
+#cancelActivity{
+	border:2px solid #802828;
+	background-color: #FF5050;
+	font-weight: bold;
+	color:#FFFFFF;
+	float:left;
+}
+#name{
+	width:160px;
+	margin-top: 20px;
+	margin-bottom: 20px
+}
+#length{
+	width:130px;
+	margin-bottom: 20px
+}
+#typeid{
+	width:160px;
+	margin-bottom: 20px
+}
+#description{
+	width:160px;
+	margin-bottom: 20px
 }

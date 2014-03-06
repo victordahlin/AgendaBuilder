@@ -12,11 +12,32 @@
 <body>
 
 <div id="container" class="row">
-	<div id="addActivityButton">+Add activity</div>
-	<ul id="addActivity">
-		<li id="activity" class="activityObject">Hej</li>
-	</ul>
-	<div id="dayContainer">
+	<<div id="activities" class="col-md-2">
+		<div id="addButtonContainer" class="row">
+			<button id="addActivityButton">+Add activity</button>	
+		</div>
+
+		<div class="row">
+			<div id="activitiesContainer">
+			</div>
+		</div>
+	</div>
+	<div id="popup" class="col-md-2">
+		<input type="text" id="name" placeholder="Name" required/><br/>
+		<input type="text" id="length" placeholder="Length"/> min<br/>
+		<select id="typeid">
+			<option value="" disabled selected>Type</option>			
+			<option value="0">Presentation</option>
+			<option value="1">Group Work</option>
+			<option value="2">Discussion</option>
+			<option value="3">Break</option>
+		</select>
+		<br/>
+		<textarea id="description" rows="10" placeholder="Description"></textarea><br/>
+		<button id="cancelActivity" value="Cancel">Cancel</button>
+		<button id="saveActivity" value="Save">Save</button>
+	</div>
+	<div id="dayContainer" class="col-md-2">
 		<div id="addDayInfo">
 			<div id="addDayStartTime">Start time:<div id="addDayStartTimeBox">08:00</div></div>
 			<div id="addDayEndTime">End time:</div>

@@ -14,6 +14,7 @@ var Activities = function (container,model) {
 
 			div.attr("id","activity");
 			div.addClass("row");
+			div.addClass("activityObject");
 
 			var name = array[i].getName();
 			var type = array[i].getType();
