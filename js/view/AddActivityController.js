@@ -15,12 +15,17 @@ var AddActivityController = function(view, model) {
 			var name = $("#name").val();
 			var length = $("#length").val();
 			var typeid = $("#typeid").val();
-			console.log(typeid);
 			var description = $("#description").val();
-			var act = new Activity(name,length,typeid,description);
-			model.addParkedActivity(act);
-			$("#popup").hide();
-			$("#activities").show();
+
+			if(name!="" && length!="" && typeid!="" && description!=""){
+				var act = new Activity(name,length,typeid,description);
+				model.addParkedActivity(act);
+				$("#popup").hide();
+				$("#activities").show();
+			}
+			else{
+				alert("Fill all o' them boxes");
+			}
 		}
 	);
 	
