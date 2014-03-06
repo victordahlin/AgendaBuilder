@@ -6,12 +6,12 @@ $(function() {
 	var model = new Model();
 	
 	// Views
-	var dragdrop = new DragDrop($("#container"),model);
 	var activities = new Activities($("#activities"),model);
 	var addActivity = new AddActivity($("#popup"),model);
+	var day = new Day($("#container"),model);
 
 	// Controllers
 	var activitiesController = new ActivitiesController(activities,model);
 	var addActivityController = new AddActivityController(addActivity,model);
-	var dragdropcontroller = new DragDropController(dragdrop,model);
+	var dayController = new DayController(day,model);
 });
