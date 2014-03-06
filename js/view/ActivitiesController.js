@@ -4,8 +4,13 @@ var ActivitiesController = function(view, model) {
 
 	view.newActivity.click(
 		function(){
+			$("#name").val("");
+			$("#length").val("");
+			$("#typeid").val("");
+			$("#description").val("");
 			$("#activities").hide();
-			$("#popup").show();		
+			$("#popup").show();
+
 		}
 	);
 	

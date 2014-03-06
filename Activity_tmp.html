@@ -20,12 +20,38 @@
 	width: 220px;
 }
 div#activity { 
-	width: 200px; 
-	height: 25px; 
-	background: red; 
+	width: 230px; 
+	height: 27px; 
 	color:#000;
-	text-align: center;
-	margin:5px;
+	margin:0px;
+	padding: 0px
+}
+div#activityTime{
+	padding: 0 0 0 10px; 
+	margin:0;
+}
+div#activityName{
+	height:25px;
+	text-align: left;
+	padding: 0 0 0 5px;
+	color:#FFFFFF;
+	font-weight: bold;
+}
+.Presentation {
+	border:2px solid #527ACC;
+	background-color: #E0EBFF;
+}
+.Discussion{
+	border:2px solid #799679;
+	background-color: #D6EAD6;
+}
+.Break {
+	border:2px solid #CCCC52;
+	background-color: yellow;
+}
+.Group {
+	border:2px solid #991F00;
+	background-color: #FFD6CC;
 }
 
 div#activitiesContainer {
@@ -63,7 +89,6 @@ textarea {
 
 	<div class="row">
 		<div id="activitiesContainer" class="col-md-2 col-md-offset-1">
-			<div id="activity">Hej</div>
 		</div>
 	</div>
 </div>
@@ -73,12 +98,12 @@ textarea {
 			<!--<form id="addActivityForm">-->
 				<input type="text" id="name" placeholder="Name" required/><br/>
 				<input type="text" id="length" placeholder="Length"/>min<br/>
-				<select id="type">
+				<select id="typeid">
 					<option value="" disabled selected>Type</option>			
-					<option value="presentation">Presentation</option>
-					<option value="discussion">Discussion</option>
-					<option value="groupWork">Group Work</option>
-					<option value="break">Break</option>
+					<option value="0">Presentation</option>
+					<option value="1">Group Work</option>
+					<option value="2">Discussion</option>
+					<option value="3">Break</option>
 				</select>
 				<br/>
 				<textarea id="description" rows="10" placeholder="Description"></textarea><br/>
@@ -113,6 +138,9 @@ textarea {
 
 <script type="text/javascript" src="js/view/AddActivity.js"></script>
 <script type="text/javascript" src="js/view/AddActivityController.js"></script>
+
+<script type="text/javascript" src="js/view/Day.js"></script>
+<script type="text/javascript" src="js/view/DayController.js"></script>
 
 </body>
 </html>
