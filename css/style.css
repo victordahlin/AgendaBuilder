@@ -38,12 +38,17 @@ div#addDayStartTimeBox {
 	float:right;
 }
 
+div#addDayEndTime, div#addDayStartTime, div#addDayTotalLength {
+	height: 25px; 
+	/*border:1px solid red;*/
+}
+
 ul#dayActivity {
 	width: 250px;
-	height:400px;
+	height:410px;
 	border:2px dashed #888888;
 	overflow-y: scroll; 
-	margin-top: 25px;
+	margin-top: 15px;
 	padding:0;
 	float:left;
 }
