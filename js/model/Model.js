@@ -225,11 +225,11 @@ function Model(){
 
 // this is the instance of our main model
 // this is what you should use in your application
-var model = new Model();
+//var model = new Model();
 
 
 // you can use this method to create some test data and test your implementation
-function createTestData(){
+/*function createTestData(){
 	model.addDay();
 	model.addActivity(new Activity("Introduction",10,0,""),0);
 	model.addActivity(new Activity("Idea 1",30,0,""),0);
@@ -244,3 +244,4 @@ function createTestData(){
 		console.log("Day '" + ActivityType[index] + "' Length: " +  model.days[0].getLengthByType(index) + " min");
 	});
 }
+*/

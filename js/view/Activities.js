@@ -13,7 +13,6 @@ var Activities = function (container,model) {
 			var nameElement = $("<div>");
 
 			div.attr("id","activity");
-			div.addClass("row");
 			div.addClass("activityObject");
 
 			var name = array[i].getName();
@@ -34,7 +33,6 @@ var Activities = function (container,model) {
 			div.append(nameElement);
 			activities.append(div);
 		}
-
 	}
 
 

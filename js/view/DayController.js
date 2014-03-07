@@ -1,11 +1,11 @@
 var DayController = function(view, model ) {	
 
+	// If user drop inside div and prevent select again
 	this.dayAct = function() {
-		// If user drop inside div and prevent select again
+		var array = model.getParkedActivities();
 		view.dayActivity.droppable({
-			drop: function( event, ui ) {	
-			//console.log($(this));					
-				//$("#dayActivity").append($(ui.helper));
+			drop: function( e, ui ) {
+				//model.removeParkedActivity(1);
 			}
 		});
 }

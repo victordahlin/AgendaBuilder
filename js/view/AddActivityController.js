@@ -1,5 +1,5 @@
 var AddActivityController = function(view, model) {
-	console.log("hej");
+	//console.log("hej");
 	view.cancelButton.click(
 		function(){
 			$("#popup").hide();	
