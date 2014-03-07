@@ -8,10 +8,10 @@ $(function() {
 	// Views
 	var activities = new Activities($("#activities"),model);
 	var addActivity = new AddActivity($("#popup"),model);
-	var day = new Day($("#container"),model);
+	var dayActivity = new DayActivity($("#container"),model);
 
 	// Controllers
 	var activitiesController = new ActivitiesController(activities,model);
 	var addActivityController = new AddActivityController(addActivity,model);
-	var dayController = new DayController(day,model);
+	var dayController = new DayController(dayActivity,model);
 });

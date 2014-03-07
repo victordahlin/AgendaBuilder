@@ -2,10 +2,12 @@ var DayController = function(view, model ) {
 
 	// If user drop inside div and prevent select again
 	this.dayAct = function() {
-		var array = model.getParkedActivities();
+		//var array = model.getParkedActivities();
 		view.dayActivity.droppable({
 			drop: function( e, ui ) {
 				//model.removeParkedActivity(1);
+				$("addDayStartTimeBox").html(model.days[0].getStart());
+				console.log("Day Start: " + model.days[0].getStart());
 			}
 		});
 }

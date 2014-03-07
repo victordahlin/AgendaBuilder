@@ -1,4 +1,4 @@
-var Day = function (container,model) {
+var DayActivity = function (container,model) {
 
 	this.dayActivity = container.find("#dayActivity");
 	this.addDayButton = container.find("#addDayButton");
