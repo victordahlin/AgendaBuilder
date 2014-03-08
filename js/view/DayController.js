@@ -6,8 +6,12 @@ var DayController = function(view, model ) {
 		view.dayActivity.droppable({
 			drop: function( e, ui ) {
 				//model.removeParkedActivity(1);
-				$("addDayStartTimeBox").html(model.days[0].getStart());
-				console.log("Day Start: " + model.days[0].getStart());
+                // Får fixa tiderna på nått sätt
+				$("#addDayStartTimeBox").html("0" + model.days[0].getStart() + "0");
+                $("#addDayEndTime").html("End time: 0" + model.days[0].getEnd() + "0");
+                $("#addDayTotalLength").html("Total length: 0" + model.days[0].getEnd() + "0");
+
+                //console.log("Day Start: " + model.days[0].getStart());
 			}
 		});
 }
