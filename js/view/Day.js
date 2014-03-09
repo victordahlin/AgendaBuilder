@@ -5,7 +5,7 @@ var DayView = function (container, model){
 
 	var dayObject = $("<div>");
 	dayObject.attr("id", this.dayID);
-	dayObject.addClass("col-md-2");		
+	dayObject.addClass("col-md-3");		
 	
 	var dayInfo = $("<div>");
 	dayInfo.attr("id", "dayInfo");
@@ -44,8 +44,9 @@ var DayView = function (container, model){
 
 	this.dayBreaks = $("<div>");
 	this.dayBreaks.attr("id", "dayBreaks");
+	dayInfo.append(this.dayBreaks);
 
-	dayObject.append(dayInfo, this.dayBreaks, this.dayActivity);
+	dayObject.append(dayInfo, this.dayActivity);
 			
 	container.append(dayObject);	
 	
