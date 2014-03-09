@@ -1,8 +1,7 @@
 var Activities = function (container,model) {
 
 	this.newActivity = container.find("#addActivityButton");
-	var activities = $(container.find("#activitiesContainer"));
-	//this.activity = container.find(".activityObject");
+	var activities = $(container.find("#activitiesContainer"));	
 
 	var array = model.getParkedActivities();
 	this.fillActivities = function(){
@@ -33,12 +32,25 @@ var Activities = function (container,model) {
 			div.append(nameElement);
 			activities.append(div);
 		}
+		
 	}
+	
+	$("#activitiesContainer").sortable({
+		items : "> li",
+		connectWith : ".dayActivity",
+		revert : true		
+		});
 
 
 	model.addObserver(this);
 	this.update = function(arg){
-		this.fillActivities();
-		this.activity = container.find(".activityObject");
+		
+		switch (arg) {
+		case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity" );
+		break;
+		default : this.fillActivities(); 
+				$("#activitiesContainer").sortable( "refresh" );
+		}
+		//this.activity = container.find(".activityObject");
 	}
 }

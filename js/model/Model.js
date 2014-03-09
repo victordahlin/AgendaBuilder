@@ -154,7 +154,7 @@ function Model(){
 			day = new Day(8,0);
 		}
 		this.days.push(day);
-		this.notifyObservers();
+		this.notifyObservers("day");
 		return day;
 	};
 	
@@ -208,6 +208,7 @@ function Model(){
 		this.notifyObservers();
 	};
 	
+	
 	//*** OBSERVABLE PATTERN ***
 	var listeners = [];
 	
@@ -221,6 +222,9 @@ function Model(){
 	    listeners.push(listener);
 	};
 	//*** END OBSERVABLE PATTERN ***
+	
+	//add first default day to model
+	this.addDay();
 }
 
 // this is the instance of our main model

@@ -1,6 +1,5 @@
 var AddActivityController = function(view, model) {
-	model.addDay();
-	
+		
 	//console.log("hej");
 	view.cancelButton.click(
 		function(){

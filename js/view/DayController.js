@@ -1,32 +1,13 @@
-var DayController = function(view, model ) {	
-
-	// If user drop inside div and prevent select again
-	this.dayAct = function() {
-		//var array = model.getParkedActivities();
-		view.dayActivity.droppable({
-			drop: function( e, ui ) {
-				//model.removeParkedActivity(1);
-				$("addDayStartTimeBox").html(model.days[0].getStart());
-				console.log("Day Start: " + model.days[0].getStart());
+var DayController = function(view, model) {	
+	
+	/*view.dayActivity.droppable({
+			drop: function(e, ui ) {
+			console.log(e.target);
+			console.log(ui.draggable);
+			console.log(view.dayID);
+			//model.moveActivity(oldday, oldposition, newday, newposition)
+			//model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
 			}
-		});
-}
-
-	// Have to deal with margins that fits new days
-	view.addDayButton.click( function(){ 
-		var div = $("<div>");
-		div.attr("id", "addDay");
-		div.css("margin-top", "0px");
-		div.css("margin-left","300px");
-		view.dayActivity.append(div);
-
-		$("#addDayButton").css("margin-left","350px");
-	});
-
-
-	model.addObserver(this);
-	this.update = function(arg){
-		this.dayAct();
-	}
+		}); */
 
 }
