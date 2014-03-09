@@ -4,26 +4,21 @@ body {
 }
 
 div#container {
-	width:auto;
-	height: auto;
+	width:100%;
 	margin:0 auto;
 	padding:0;
 }
 
 div#dayContainer {
+<<<<<<< HEAD
 	/* border:1px solid red; */
 	width:auto;
 	height: auto;
+=======
+	width:15%;
+	height: 45%;
+>>>>>>> fc4bb41c3660f1549ae5847cf2dcd66f2b8e2550
 }
-/*
-ul#addActivity {
-	width: 250px;
-	height:500px;
-	float: left;
-	border:2px dashed #888888;
-	margin:0;
-	padding:0.5% 1.5%;
-}*/
 
 div#dayInfo {
 	width: 225px;
@@ -79,9 +74,9 @@ ul#activitiesContainer, ul#addActivity, ul.dayActivity {
 
 /*  ADDACTIVITY *************************************************/
 
-div#activities {
-	width: auto;
-	height: auto;
+div#activities.col-md-2 {
+	width: 15%;
+	height:50%;
 }
 
 ul#activitiesContainer {
