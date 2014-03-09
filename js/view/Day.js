@@ -1,6 +1,8 @@
 var DayView = function (container, model){
 	
 	this.dayID = (model.days.length-1);
+	console.log("dayID " + this.dayID);
+
 	var dayObject = $("<div>");
 	dayObject.attr("id", this.dayID);
 	dayObject.addClass("col-md-2");		
@@ -22,7 +24,7 @@ var DayView = function (container, model){
 	dayEndTime.html("End time: ");
 	this.dayEndTimeBox = $("<div>");
 	this.dayEndTimeBox.attr("id", "addDayEndTimeBox");
-	this.dayStartTimeBox.html(model.days[this.dayID].getEnd());
+	this.dayEndTimeBox.html(model.days[this.dayID].getEnd());
 	dayEndTime.append(this.dayEndTimeBox);
 	dayInfo.append(dayEndTime);
 	
@@ -30,6 +32,7 @@ var DayView = function (container, model){
 	dayTotalLength.attr("id", "dayTotalLength");
 	dayTotalLength.html("Total Length: ");
 	this.totalTime = $("<span>");
+	this.totalTime.attr("id", "dayTotalLengthBox");
 	this.totalTime.html("0");
 	dayTotalLength.append(this.totalTime);
 	dayTotalLength.append(" min");
@@ -46,22 +49,29 @@ var DayView = function (container, model){
 			
 	model.addObserver(this);
 	
-	this.update = function(arg){
-		this.dayStartTimeBox.html(model.days[this.dayID].getStart());
-		this.dayStartTimeBox.html(model.days[this.dayID].getEnd());
-		this.totalTime.html(model.days[this.dayID].getTotalLength());
+	this.update = function(arg){		
+		//console.log(model.days[this.dayID].getStart());
+		//console.log(model.days[this.dayID].getEnd());
+		//console.log(model.days[this.dayID].getTotalLength());
+
 		$(".dayActivity").sortable({	
 			//http://api.jqueryui.com/sortable/#event-change
 			revert : true,
 		    receive : function (event, ui) {
 			  //model.moveActivity(oldday, oldposition, newday, newposition)
 			  //model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
+			  var day = model.days.length-1;
+			$("#addDayStartTimeBox").html(model.days[day].getStart());
+			$("#addDayEndTimeBox").html(model.days[day].getEnd());
+			$("#dayTotalLengthBox").html(model.days[day].getTotalLength());
+
 		    },
 			change: function (event, ui) {
 			
 			console.log(ui.originalPosition);
 			console.log(ui.position);	//coordinates - blההההההההה
 			console.log(ui.sender); //null if from same container
+
 			
 				//model.moveActivity(oldday, oldposition, newday, newposition)
 				//model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
