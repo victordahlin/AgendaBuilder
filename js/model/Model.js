@@ -66,6 +66,8 @@ function Activity(name,length,typeid,description){
 // days to the model, so you don't need call this yourself.
 function Day(startH,startM) {
 	this._start = startH * 60 + startM;
+	//console.log("start=" + this._start);
+
 	this._activities = [];
 
 	// sets the start time to new value
@@ -79,7 +81,7 @@ function Day(startH,startM) {
 	this.getTotalLength = function () {
 		var totalLength = 0;
 		$.each(this._activities,function(index,activity){
-			totalLength += activity.getLength();
+			totalLength += parseInt(activity.getLength());
 		});
 		return totalLength;
 	};
@@ -88,6 +90,7 @@ function Day(startH,startM) {
 	// the end time of the day
 	this.getEnd = function() {
 		var end = this._start + this.getTotalLength();
+		//console.log("end=" + end);
 		return Math.floor(end/60) + ":" + end % 60;
 	};
 	
@@ -165,7 +168,7 @@ function Model(){
 		} else {
 			this.parkedActivities.push(activity);
 		}
-		this.notifyObservers(parkedActivities);
+		this.notifyObservers(this.parkedActivities);
 	}
 	
 	// add an activity to parked activities

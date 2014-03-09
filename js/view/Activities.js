@@ -1,5 +1,5 @@
 var Activities = function (container,model) {
-
+	
 	this.newActivity = container.find("#addActivityButton");
 	var activities = $(container.find("#activitiesContainer"));	
 

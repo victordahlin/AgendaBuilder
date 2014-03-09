@@ -26,23 +26,36 @@ ul#addActivity {
 }*/
 
 div#dayInfo {
-	width: 225px;
+	border:1px solid red;
+	width: 170px;
 	height: 70px;
-	
+	float:left;
+}
+
+div#dayBreaks {
+	float:left;
+	width: 70px;
+	height: 70px;
+	margin-left: 10px;
+	border:1px solid red;
 }
 
 div#addDayStartTimeBox {
 	border:2px solid #787878;
-	margin-right: 90px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding:0 10px;
+	margin-right: 50px;
 	float:right;
 }
 
 div#addDayEndTime, div#addDayStartTime, div#dayTotalLength {
 	height: 25px; 
-	width: 225px;
-	/*border:1px solid red;*/
+	width: auto;
+}
+
+div#addDayEndTimeBox {
+	float:right;
+	padding:0 10px;
+	margin-right: 50px;
 }
 
 ul.dayActivity {

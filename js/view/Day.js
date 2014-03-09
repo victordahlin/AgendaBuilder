@@ -41,15 +41,19 @@ var DayView = function (container, model){
 	this.dayActivity = $("<ul>");	//container for activities
 	this.dayActivity.addClass("dayActivity");	
 	this.dayActivity.attr("id", this.dayID);
-			
-	dayObject.append(dayInfo, this.dayActivity);
+
+	this.dayBreaks = $("<div>");
+	this.dayBreaks.attr("id", "dayBreaks");
+
+	dayObject.append(dayInfo, this.dayBreaks, this.dayActivity);
 			
 	container.append(dayObject);	
 	
 			
 	model.addObserver(this);
 	
-	this.update = function(arg){		
+	this.update = function(arg){
+	
 		//console.log(model.days[this.dayID].getStart());
 		//console.log(model.days[this.dayID].getEnd());
 		//console.log(model.days[this.dayID].getTotalLength());
@@ -58,12 +62,12 @@ var DayView = function (container, model){
 			//http://api.jqueryui.com/sortable/#event-change
 			revert : true,
 		    receive : function (event, ui) {
-			  //model.moveActivity(oldday, oldposition, newday, newposition)
+		    	 var day = model.days.length-1;
+		    	console.log(ui.item.html());
+			  model.moveActivity(null, null, day, day);
 			  //model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
-			  var day = model.days.length-1;
-			$("#addDayStartTimeBox").html(model.days[day].getStart());
-			$("#addDayEndTimeBox").html(model.days[day].getEnd());
-			$("#dayTotalLengthBox").html(model.days[day].getTotalLength());
+			 
+
 
 		    },
 			change: function (event, ui) {
@@ -71,7 +75,11 @@ var DayView = function (container, model){
 			console.log(ui.originalPosition);
 			console.log(ui.position);	//coordinates - blההההההההה
 			console.log(ui.sender); //null if from same container
-
+			
+var day = model.days.length-1;
+		$("#addDayStartTimeBox").html(model.days[day].getStart());
+		$("#addDayEndTimeBox").html(model.days[day].getEnd());
+		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());	
 			
 				//model.moveActivity(oldday, oldposition, newday, newposition)
 				//model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
