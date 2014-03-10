@@ -42,14 +42,19 @@ var DayView = function (container, model){
 	this.dayActivity.addClass("dayActivity");	
 	this.dayActivity.attr("id", this.dayID);
 
-	this.dayBreaks = $("<div>");
-	this.dayBreaks.attr("id", "dayBreaks");
-	dayInfo.append(this.dayBreaks);
+	var dayBreaks = $("<div>");
+	dayBreaks.attr("id", "dayBreaks");
+	this.canvasDiv = $("<canvas>");
+	this.canvasDiv.attr("width","70");
+	this.canvasDiv.attr("height","70");
+	this.canvasDiv.attr("id","canvasBox");
+	dayBreaks.append(this.canvasDiv);
+	dayInfo.append(dayBreaks);
 
 	dayObject.append(dayInfo, this.dayActivity);
 			
 	container.append(dayObject);	
-	
+
 			
 	model.addObserver(this);
 	
@@ -63,13 +68,11 @@ var DayView = function (container, model){
 			//http://api.jqueryui.com/sortable/#event-change
 			revert : true,
 		    receive : function (event, ui) {
-		    	 var day = model.days.length-1;
+		    	var day = model.days.length-1;
 		    	console.log(ui.item.html());
-			  model.moveActivity(null, null, day, day);
-			  //model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
-			 
-
-
+			  	model.moveActivity(null, null, day, day);
+			  	//model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
+			
 		    },
 			change: function (event, ui) {
 			
@@ -77,17 +80,75 @@ var DayView = function (container, model){
 			console.log(ui.position);	//coordinates - blההההההההה
 			console.log(ui.sender); //null if from same container
 			
-var day = model.days.length-1;
-		$("#addDayStartTimeBox").html(model.days[day].getStart());
-		$("#addDayEndTimeBox").html(model.days[day].getEnd());
-		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());	
-			
-				//model.moveActivity(oldday, oldposition, newday, newposition)
-				//model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
+			var day = model.days.length-1;
+			$("#addDayStartTimeBox").html(model.days[day].getStart());
+			$("#addDayEndTimeBox").html(model.days[day].getEnd());
+			$("#dayTotalLengthBox").html(model.days[day].getTotalLength());	
+
+
+			/**************/
+  	   		var context = $("#canvasBox").get(0).getContext("2d");
+    		var activityArray = model.days[day]._activities; 
+
+			//total box size
+			var width = 60;
+			var height = 70;
+
+			//box start coordinates
+			var x = 5;
+			var y = 0;
+
+			var totalLength = model.days[day].getTotalLength();
+
+			var array = [0,0,0,0];
+			for (var i = 0; i < activityArray.length; i++ ){
+				var type = activityArray[i].getType();
+
+				switch (type){ 
+				case "Presentation":
+					array[0] += activityArray[i].getLength()* height / totalLength;
+					break;
+				case "Group Work":
+					array[1] += activityArray[i].getLength() * height / totalLength;
+					break;			
+				case "Discussion":
+					array[2] += activityArray[i].getLength() * height / totalLength;
+					break;
+				case "Break":
+					array[3] += activityArray[i].getLength() * height / totalLength;
+					break;
+				}		
+
+			}     	
+
+			//fill box
+			var colors = ["#E0EBFF","#FFD6CC","#D6EAD6","#FFFF66"]
+			for (var i=0; i < array.length; i++){
+				context.beginPath();
+   	 			context.rect(x, y, width, height);
+ 				context.fillStyle= colors[i];
+     			context.fill();
+     			y = y + array[i];
+			}
+
+    		//red line
+    		y = height*0.7;
+    		context.beginPath();
+			context.moveTo(0,y);
+			context.lineTo(70,y);
+			context.lineWidth = 3;
+    		context.strokeStyle = '#FF3030';
+			context.stroke();
+
+			/**************/
+
+			//model.moveActivity(oldday, oldposition, newday, newposition)
+			//model.moveActivity(e.target, ui.draggable.id, view.dayID, ???);
 			},
 			connectWith : ".dayActivity, #activitiesContainer"
 		});
 	}
+
 	
 	
 }
