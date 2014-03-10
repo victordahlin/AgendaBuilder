@@ -1,11 +1,11 @@
 var Activities = function (container,model) {
 	
 	this.newActivity = container.find("#addActivityButton");
-	var activities = $(container.find("#activitiesContainer"));	
+	this.activities = $(container.find("#activitiesContainer"));	
 
 	var array = model.getParkedActivities();
 	this.fillActivities = function(){
-		activities.empty();
+		this.activities.empty();
 		for( var i = 0; i < array.length; i++ ) {
 			var div = $("<li>");
 			var timeElement = $("<div>");
@@ -30,27 +30,15 @@ var Activities = function (container,model) {
 
 			div.append(timeElement);
 			div.append(nameElement);
-			activities.append(div);
+			this.activities.append(div);
 		}
-		
-	}
-	
-	$("#activitiesContainer").sortable({
+
+		this.activities.sortable({
 		items : "> li",
 		connectWith : ".dayActivity",
 		revert : true		
 		});
-
-
-	model.addObserver(this);
-	this.update = function(arg){
 		
-		switch (arg) {
-		case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity" );
-		break;
-		default : this.fillActivities(); 
-				$("#activitiesContainer").sortable( "refresh" );
-		}
-		//this.activity = container.find(".activityObject");
 	}
+
 }
