@@ -1,3 +1,5 @@
+// JavaScript Document
+
 // The possible activity types
 var ActivityType = ["Presentation","Group Work","Discussion","Break"]
 
@@ -66,8 +68,6 @@ function Activity(name,length,typeid,description){
 // days to the model, so you don't need call this yourself.
 function Day(startH,startM) {
 	this._start = startH * 60 + startM;
-	//console.log("start=" + this._start);
-
 	this._activities = [];
 
 	// sets the start time to new value
@@ -90,7 +90,6 @@ function Day(startH,startM) {
 	// the end time of the day
 	this.getEnd = function() {
 		var end = this._start + this.getTotalLength();
-		//console.log("end=" + end);
 		return Math.floor(end/60) + ":" + end % 60;
 	};
 	
@@ -157,7 +156,7 @@ function Model(){
 			day = new Day(8,0);
 		}
 		this.days.push(day);
-		this.notifyObservers("day");
+		this.notifyObservers();
 		return day;
 	};
 	
@@ -168,17 +167,13 @@ function Model(){
 		} else {
 			this.parkedActivities.push(activity);
 		}
-		this.notifyObservers(this.parkedActivities);
+		this.notifyObservers();
 	}
 	
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity){
 		this.parkedActivities.push(activity);
 		this.notifyObservers();
-	};
-
-	this.getParkedActivities = function(activity){
-		return this.parkedActivities;
 	};
 	
 	// remove an activity on provided position from parked activites 
@@ -211,7 +206,6 @@ function Model(){
 		this.notifyObservers();
 	};
 	
-	
 	//*** OBSERVABLE PATTERN ***
 	var listeners = [];
 	
@@ -225,18 +219,18 @@ function Model(){
 	    listeners.push(listener);
 	};
 	//*** END OBSERVABLE PATTERN ***
-	
 	//add first default day to model
 	this.addDay();
 }
 
 // this is the instance of our main model
 // this is what you should use in your application
-//var model = new Model();
+/*
+var model = new Model();
 
 
 // you can use this method to create some test data and test your implementation
-/*function createTestData(){
+function createTestData(){
 	model.addDay();
 	model.addActivity(new Activity("Introduction",10,0,""),0);
 	model.addActivity(new Activity("Idea 1",30,0,""),0);

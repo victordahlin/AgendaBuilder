@@ -2,8 +2,8 @@ var DayView = function (container, model){
 
 	this.addDayButtonBox = $("#addDayButton");
 	
-	this.dayID = (model.days.length-1);
-	//console.log("dayID " + this.dayID);
+	this.dayID = model.days.length-1;
+	console.log("dayID " + this.dayID);
 
 	var dayObject = $("<div>");
 	dayObject.attr("id", this.dayID);

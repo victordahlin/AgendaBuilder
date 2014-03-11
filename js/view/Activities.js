@@ -3,7 +3,9 @@ var Activities = function (container,model) {
 	this.newActivity = container.find("#addActivityButton");
 	this.activities = $(container.find("#activitiesContainer"));	
 
-	var array = model.getParkedActivities();
+	var array = model.parkedActivities;
+	console.log("array length=" + array.length);
+	
 	this.fillActivities = function(){
 		this.activities.empty();
 		for( var i = 0; i < array.length; i++ ) {
