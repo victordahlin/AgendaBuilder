@@ -21,7 +21,7 @@ var AddActivityController = function(view, model) {
 				var act = new Activity(name,length,typeid,description);
 				var day = model.days.length-1;
 				
-				model.addActivity(act,day);
+				//model.addActivity(act,day);
 				model.addParkedActivity(act);
 				
 				$("#popup").hide();

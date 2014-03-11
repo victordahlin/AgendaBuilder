@@ -62,11 +62,13 @@ var DayView = function (container, model){
 		$("#addDayStartTimeBox").html(model.days[day].getStart());
 		$("#addDayEndTimeBox").html(model.days[day].getEnd());
 		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());	
+		console.log("model.ldays[day].gettotlength  " +model.days[day].getTotalLength());
 	}
 	dayInfoBox();
 
 	var dayInfoBoxStatus = function() {
 		var day = model.days.length-1;
+		console.log(day);
   	   	var context = $("#canvasBox").get(0).getContext("2d");
     	var activityArray = model.days[day]._activities; 
 
@@ -120,24 +122,45 @@ var DayView = function (container, model){
    		context.strokeStyle = '#FF3030';
 		context.stroke();
 	}
+
+	var newPosition = null;//model.days[this.dayID]._activities.indexOf(this.dayActivity);
+	var oldPosition = null;//model.days[this.dayID]._activities.indexOf(this.dayActivity);
+	var oldDay = null;
+	var newDay = null;
+
+	$(".dayActivity").sortable({	
+		revert : true,
+	    receive : function (event, ui) {
+	    	console.log("receive");
+
+	    	//newPosition =  ??? index där vi lägger den
+	    	//newDay = this.dayID; //index för den här dagen
+		  	model.moveActivity(oldDay, oldPosition, 0, newPosition);
+		  	dayInfoBoxStatus();
+	    },
 			
+		change: function (event, ui) {
+			console.log("change");
+		  	//model.moveActivity(oldDay, oldPosition, newDay, newPosition);
+
+		},
+
+		remove: function (event,ui){
+			//...
+		},
+
+		connectWith : ".dayActivity, #activitiesContainer"
+
+
+	});		
+
 	model.addObserver(this);	
 	this.update = function(arg){
+		dayInfoBox();
 
-		$(".dayActivity").sortable({	
-			revert : true,
-		    receive : function (event, ui) {
-		    	var day = model.days.length-1;
-			  	model.moveActivity(null, null, day, day);
-				
-		    },
-				
-			change: function (event, ui) {
-				dayInfoBox();
-				dayInfoBoxStatus();
-			},
-			connectWith : ".dayActivity, #activitiesContainer"
-		});
+		//var day = model.days.indexOf();
+		oldDay = newDay;
+		oldPosition = newPosition;
 	}
 
 	
