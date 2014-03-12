@@ -4,7 +4,7 @@ var Activities = function (container,model) {
 	this.activities = $(container.find("#activitiesContainer"));	
 
 	var array = model.parkedActivities;
-	console.log("array length=" + array.length);
+	//console.log("array length=" + array.length);
 	
 	this.fillActivities = function(){
 		this.activities.empty();
