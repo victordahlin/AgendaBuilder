@@ -58,16 +58,16 @@ var DayView = function (container, model){
 	}
 	this.createDay();
 
-	var dayInfoBox = function(dayID) {
+	this.dayInfoBox = function(dayID) {
 		var day = dayID;
 		$("#addDayStartTimeBox").html(model.days[day].getStart());
 		$("#addDayEndTimeBox").html(model.days[day].getEnd());
 		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());	
 		//console.log("model.ldays[day].gettotlength  " +model.days[day].getTotalLength());
 	}
-	dayInfoBox(this.dayID);
+	this.dayInfoBox(this.dayID);
 
-	var dayInfoBoxStatus = function(dayID) {
+	this.dayInfoBoxStatus = function(dayID) {
 		var day = dayID;
 		//console.log(day);
   	   	var context = $("#canvasBox").get(0).getContext("2d");
@@ -129,6 +129,7 @@ var DayView = function (container, model){
 
 	model.addObserver(this);	
 	this.update = function(arg){
-		dayInfoBox(this.dayID);
+		this.dayInfoBox(this.dayID);
+		this.dayInfoBoxStatus(this.dayID);
 	}	
 }

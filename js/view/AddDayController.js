@@ -32,7 +32,7 @@ console.log(view);
                 console.log("newday",newday);
                 console.log("oldpos",oldposition);
                 console.log("newpos",newposition);                       
-                model.moveActivity(oldday, oldposition, newday, newposition)
+                model.moveActivity(oldday, oldposition, newday, newposition);
         	},
             connectWith : ".dayActivity, #activitiesContainer"
      	});
