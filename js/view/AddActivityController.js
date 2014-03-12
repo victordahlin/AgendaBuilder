@@ -3,9 +3,10 @@ var AddActivityController = function(view, model) {
 	view.cancelButton.click(
 		function(){
 			$("#popup").hide();	
-			$("#activities").show();
-			$("#dayContainer").show();
-			$("#addDayButton").show();
+			$("#activitiesContainer").show();
+			$("#addButtonContainer").show();
+			//$("#dayContainer").show();
+			//$("#addDayButton").show();
 			//console.log("cancel");
 		}
 	);
@@ -25,9 +26,8 @@ var AddActivityController = function(view, model) {
 				model.addParkedActivity(act);
 				
 				$("#popup").hide();
-				$("#activities").show();
-				$("#dayContainer").show();
-				$("#addDayButton").show();
+				$("#activitiesContainer").show();
+				$("#addButtonContainer").show();
 			}
 			else{
 				alert("Fill all o' them boxes");

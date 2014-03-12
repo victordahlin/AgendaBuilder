@@ -14,6 +14,7 @@ var Activities = function (container,model) {
 			var nameElement = $("<div>");
 
 			div.attr("id","activity");
+			div.data("start_pos", i)
 			div.addClass("activityObject");
 
 			var name = array[i].getName();

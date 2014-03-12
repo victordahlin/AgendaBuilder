@@ -7,7 +7,7 @@ var DayView = function (container, model){
 
 		var dayObject = $("<div>");
 		dayObject.attr("id", this.dayID);
-		dayObject.addClass("col-md-2");		
+		dayObject.addClass("col-md-3");		
 		
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", "dayInfo");
@@ -55,6 +55,33 @@ var DayView = function (container, model){
 		dayInfo.append(dayBreaks);
 		dayObject.append(dayInfo, this.dayActivity);			
 		container.append(dayObject);
+
+		$(".dayActivity").sortable({   
+        	revert : true,
+                      
+            update: function (event, ui) {     
+            	var oldday = null;
+                if(ui.sender != null){
+                	oldday = ui.sender.attr("id");
+                	if(oldday == "activitiesContainer"){
+                    	oldday = null;
+                    }
+                }
+                var newday = $(this).attr("id");
+                var oldposition = ui.item.data("start_pos");
+                var newposition = ui.item.index();
+                console.log("ui",ui);
+                console.log("event",event);
+                console.log("oldday",oldday);
+                console.log("newday",newday);
+                console.log("oldpos",oldposition);
+                console.log("newpos",newposition);                       
+                model.moveActivity(oldday, oldposition, newday, newposition);
+
+                ui.item.data("start_pos", newposition);
+        	},
+            connectWith : ".dayActivity, #activitiesContainer"
+     	});
 	}
 	this.createDay();
 
@@ -62,8 +89,7 @@ var DayView = function (container, model){
 		var day = dayID;
 		$("#addDayStartTimeBox").html(model.days[day].getStart());
 		$("#addDayEndTimeBox").html(model.days[day].getEnd());
-		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());	
-		//console.log("model.ldays[day].gettotlength  " +model.days[day].getTotalLength());
+		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());
 	}
 	this.dayInfoBox(this.dayID);
 

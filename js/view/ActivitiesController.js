@@ -7,9 +7,10 @@ var ActivitiesController = function(view, model) {
 			$("#length").val("");
 			$("#typeid").val("");
 			$("#description").val("");
-			$("#activities").hide();
-			$("#dayContainer").hide();
-			$("#addDayButton").hide();
+			$("#activitiesContainer").hide();
+			$("#addButtonContainer").hide();
+			//$("#dayContainer").hide();
+			//$("#addDayButton").hide();
 			$("#popup").show();
 		}
 	);
