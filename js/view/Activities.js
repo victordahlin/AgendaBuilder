@@ -24,7 +24,7 @@ var Activities = function (container,model) {
 
 			timeElement.html(time + " min");
 			timeElement.attr("id","activityTime");
-			timeElement.addClass("col-md-4");
+			timeElement.addClass("col-md-3");
 
 			nameElement.html(name);
 			nameElement.addClass(type);
@@ -42,6 +42,11 @@ var Activities = function (container,model) {
 		revert : true		
 		});
 		
+	}
+
+	model.addObserver(this);
+	this.update = function(arg){
+		this.fillActivities();
 	}
 
 }

@@ -1,13 +1,16 @@
 var DayView = function (container, model){
 	
-	this.dayID = model.days.length-1;
+	this.addDayButtonBox = $("#addDayButton");
+	
+	this.dayID = model.days.length-1; // Init
+
 	this.createDay = function(){
 		this.dayID = model.days.length-1;
-		console.log("dayID " + this.dayID);
+		//console.log("dayID " + this.dayID);
 
 		var dayObject = $("<div>");
 		dayObject.attr("id", this.dayID);
-		dayObject.addClass("col-md-4");		
+		dayObject.addClass("col-xs-6 col-md-5");		
 		
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", "dayInfo");
@@ -55,35 +58,8 @@ var DayView = function (container, model){
 		dayInfo.append(dayBreaks);
 		dayObject.append(dayInfo, this.dayActivity);			
 		container.append(dayObject);
-
-		$(".dayActivity").sortable({   
-        	revert : true,
-                      
-            update: function (event, ui) {     
-            	var oldday = null;
-                if(ui.sender != null){
-                	oldday = ui.sender.attr("id");
-                	if(oldday == "activitiesContainer"){
-                    	oldday = null;
-                    }
-                }
-                var newday = $(this).attr("id");
-                var oldposition = ui.item.data("start_pos");
-                var newposition = ui.item.index();
-                console.log("ui",ui);
-                console.log("event",event);
-                console.log("oldday",oldday);
-                console.log("newday",newday);
-                console.log("oldpos",oldposition);
-                console.log("newpos",newposition);                       
-                model.moveActivity(oldday, oldposition, newday, newposition);
-
-                ui.item.data("start_pos", newposition);
-        	},
-            connectWith : ".dayActivity, #activitiesContainer"
-     	});
 	}
-	this.createDay();
+	this.createDay(); // init
 
 	this.dayInfoBox = function(dayID) {
 		var day = dayID;
@@ -91,7 +67,7 @@ var DayView = function (container, model){
 		$("#addDayEndTimeBox").html(model.days[day].getEnd());
 		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());
 	}
-	this.dayInfoBox(this.dayID);
+	this.dayInfoBox(this.dayID); // init
 
 	this.dayInfoBoxStatus = function(dayID) {
 		var day = dayID;
@@ -150,8 +126,7 @@ var DayView = function (container, model){
 		context.stroke();
 	}	
 
-	this.addDayButtonBox = $("#addDayButton");
-	this.dayActivityList = $(".dayActivity");
+	
 
 	model.addObserver(this);	
 	this.update = function(arg){

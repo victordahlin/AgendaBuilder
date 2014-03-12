@@ -5,8 +5,7 @@ var AddActivityController = function(view, model) {
 			$("#popup").hide();	
 			$("#activitiesContainer").show();
 			$("#addButtonContainer").show();
-			//$("#dayContainer").show();
-			//$("#addDayButton").show();
+			$("#addDayButton").show();
 			//console.log("cancel");
 		}
 	);
@@ -28,6 +27,7 @@ var AddActivityController = function(view, model) {
 				$("#popup").hide();
 				$("#activitiesContainer").show();
 				$("#addButtonContainer").show();
+				$("#addDayButton").show();
 			}
 			else{
 				alert("Fill all o' them boxes");

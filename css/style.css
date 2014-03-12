@@ -1,26 +1,8 @@
-body {
-	margin:0 auto;
-	padding-left: 25px;
-}
-
-div#container {
-	width:auto;
-	height: auto;
-	margin-left:300;
-	padding:0;
-}
-.container {
-	margin-left:300;
-}
 div#dayContainer {
-	/*border:1px solid red;*/
-	width:auto;
-	height: auto;
-	margin-top: 25px
+	padding-top:2%;
 }
 
 div#dayInfo {
-	/*border:1px solid red;*/
 	width: 170px;
 	height: 70px;
 	position: relative;
@@ -29,7 +11,6 @@ div#dayInfo {
 div#dayBreaks {
 	width: 70px;
 	height: 70px;
-	/*border:1px solid red;*/
 	position: absolute;
 	top:0;
     margin-right:-80px;
@@ -60,15 +41,16 @@ ul.dayActivity {
 	border:2px dashed #888888;
 	margin-top: 15px;
 	padding:0;
-	clear:both;
 }
 
 div#addDayButton {
 	width: 125px;
-	height: 100px;
-	padding-top: 35px;
-	padding-bottom: 20px;
+	height: 100%;
+	padding: 20px;
 	margin-top: 25px;
+	margin-bottom: 0;
+	margin-right: 50px;
+	margin-left: 50px;
 }
 
 div#addDayButton {
@@ -85,12 +67,15 @@ ul#activitiesContainer, ul#addActivity, ul.dayActivity {
 
 /*  ADDACTIVITY *************************************************/
 
+div#activities, ul#activitiesContainer {
+	padding-right:40px;
+	border-right: 1px solid #888888;
+}
+
 div#activities {
 	padding-top: 25px;
 	width: auto;
 	height: 100%;
-	border-right: 1px solid #888888;
-	position: fixed
 }
 
 ul#activitiesContainer {
@@ -102,11 +87,8 @@ ul#activitiesContainer {
 }
 
 div#addButtonContainer {
-	margin-top: 0;
-	margin-right: 0;
-	margin-left: 0;
-	margin-bottom: 5px;
-	padding:0 5%;
+	margin:2%;
+
 }
 
 button#addActivityButton{
@@ -152,7 +134,6 @@ div#activityName{
 	background-color: #FFD6CC;
 }
 
-
 textarea {
 	resize:none;
 }
@@ -161,7 +142,7 @@ textarea {
 
 div#popup {
 	width: 250px;
-	height: 531px;
+	height: auto;
 }
 
 #saveActivity {
