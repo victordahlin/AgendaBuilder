@@ -80,6 +80,8 @@ function DayView(container, model){
 
 		var array = [0,0,0,0];
 		
+		if (totalLength != 0){
+
 		for (var i = 0; i < activityArray.length; i++ ){
 			var type = activityArray[i].getType();
 
@@ -117,6 +119,7 @@ function DayView(container, model){
 		context.lineWidth = 3;
    		context.strokeStyle = '#FF3030';
 		context.stroke();
+	}
 	}	
 
 	this.fillDayActivity = function(){
