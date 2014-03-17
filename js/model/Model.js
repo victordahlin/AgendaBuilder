@@ -156,7 +156,7 @@ function Model(){
 			day = new Day(8,0);
 		}
 		this.days.push(day);
-		this.notifyObservers();
+		this.notifyObservers("day");
 		return day;
 	};
 	
@@ -167,19 +167,19 @@ function Model(){
 		} else {
 			this.parkedActivities.push(activity);
 		}
-		this.notifyObservers();
+		//this.notifyObservers();
 	}
 	
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity){
 		this.parkedActivities.push(activity);
-		this.notifyObservers();
+		this.notifyObservers("parked");
 	};
 	
 	// remove an activity on provided position from parked activites 
 	this.removeParkedActivity = function(position) {
 		act = this.parkedActivities.splice(position,1)[0];
-		this.notifyObservers();
+		this.notifyObservers("parked");
 		return act;
 	};
 	
@@ -203,7 +203,8 @@ function Model(){
 			var activity = this.days[oldday]._removeActivity(oldposition);
 			this.days[newday]._addActivity(activity,newposition);
 		}
-		this.notifyObservers();
+		this.notifyObservers(oldday);
+		this.notifyObservers(newday);
 	};
 	
 	//*** OBSERVABLE PATTERN ***
@@ -219,8 +220,7 @@ function Model(){
 	    listeners.push(listener);
 	};
 	//*** END OBSERVABLE PATTERN ***
-	//add first default day to model
-	this.addDay();
+	//add first default day to model	
 }
 
 // this is the instance of our main model

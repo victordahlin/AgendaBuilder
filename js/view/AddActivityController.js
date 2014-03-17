@@ -6,7 +6,7 @@ var AddActivityController = function(view, model) {
 			$("#activitiesContainer").show();
 			$("#addButtonContainer").show();
 			$("#addDayButton").show();
-			//console.log("cancel");
+			
 		}
 	);
 	
@@ -19,9 +19,6 @@ var AddActivityController = function(view, model) {
 
 			if(name!="" && length!="" && typeid!="" && description!=""){
 				var act = new Activity(name,length,typeid,description);
-				var day = model.days.length-1;
-				
-				//model.addActivity(act,day);
 				model.addParkedActivity(act);
 				
 				$("#popup").hide();

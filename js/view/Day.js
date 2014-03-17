@@ -1,13 +1,9 @@
-var DayView = function (container, model){
+function DayView(container, model){
+	this.model=model;
+	model.addDay(); //could be changed to add day with user input in constructor (above) parameters.
 	
-	this.addDayButtonBox = $("#addDayButton");
+	this.dayID = (model.days.length-1);
 	
-	this.dayID = model.days.length-1; // Init
-
-	this.createDay = function(){
-		this.dayID = model.days.length-1;
-		//console.log("dayID " + this.dayID);
-
 		var dayObject = $("<div>");
 		dayObject.attr("id", this.dayID);
 		dayObject.addClass("col-xs-6 col-md-5");		
@@ -58,22 +54,19 @@ var DayView = function (container, model){
 		dayInfo.append(dayBreaks);
 		dayObject.append(dayInfo, this.dayActivity);			
 		container.append(dayObject);
+	
+	this.dayInfoBox = function() {
+		
+		this.dayStartTimeBox.html(this.model.days[this.dayID].getStart());
+		this.dayEndTimeBox.html(this.model.days[this.dayID].getEnd());
+		this.totalTime.html(this.model.days[this.dayID].getTotalLength());
 	}
-	this.createDay(); // init
+	this.dayInfoBox(); // init
 
-	this.dayInfoBox = function(dayID) {
-		var day = dayID;
-		$("#addDayStartTimeBox").html(model.days[day].getStart());
-		$("#addDayEndTimeBox").html(model.days[day].getEnd());
-		$("#dayTotalLengthBox").html(model.days[day].getTotalLength());
-	}
-	this.dayInfoBox(this.dayID); // init
-
-	this.dayInfoBoxStatus = function(dayID) {
-		var day = dayID;
-		//console.log(day);
-  	   	var context = $("#canvasBox").get(0).getContext("2d");
-    	var activityArray = model.days[day]._activities; 
+	this.dayInfoBoxStatus = function() {
+		
+  	   	var context = this.canvasDiv.get(0).getContext("2d");
+    	var activityArray = this.model.days[this.dayID]._activities; 
 
 		//total box size
 		var width = 60;
@@ -83,7 +76,7 @@ var DayView = function (container, model){
 		var x = 5;
 		var y = 0;
 
-		var totalLength = model.days[day].getTotalLength();
+		var totalLength = model.days[this.dayID].getTotalLength();
 
 		var array = [0,0,0,0];
 		
@@ -105,7 +98,7 @@ var DayView = function (container, model){
 				break;
 			}		
 		}     	
-
+		this.dayInfoBox(); //init
 		//fill box
 		var colors = ["#E0EBFF","#FFD6CC","#D6EAD6","#FFFF66"]
 		for (var i=0; i < array.length; i++){
@@ -126,11 +119,44 @@ var DayView = function (container, model){
 		context.stroke();
 	}	
 
-	
+	this.fillDayActivity = function(){
+		this.dayActivity.empty();
+		var array = this.model.days[this.dayID]._activities;			
+		for( var i = 0; i < array.length; i++ ) {
+			var div = $("<li>");
+			var timeElement = $("<div>");
+			var nameElement = $("<div>");
+
+			div.attr("id","activity");
+			div.data("start_pos", i)
+			div.addClass("activityObject");
+
+			var name = array[i].getName();
+			var type = array[i].getType();			
+			var time = array[i].getLength();
+
+			timeElement.html(time + " min");
+			timeElement.attr("id","activityTime");
+			timeElement.addClass("col-md-3");
+
+			nameElement.html(name);
+			nameElement.addClass(type);
+			nameElement.addClass("col-md-8");
+			nameElement.attr("id","activityName");
+
+			div.append(timeElement);
+			div.append(nameElement);
+			this.dayActivity.append(div);
+			console.log("Filled dayActivity");
+		}
+	}
 
 	model.addObserver(this);	
 	this.update = function(arg){
-		this.dayInfoBox(this.dayID);
-		this.dayInfoBoxStatus(this.dayID);
+	this.dayInfoBox();
+	this.dayInfoBoxStatus();
+	if(arg == this.dayID){
+		this.fillDayActivity();
+		}
 	}	
 }
