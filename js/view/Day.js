@@ -80,7 +80,6 @@ function DayView(container, model){
 
 		var array = [0,0,0,0];
 		
-		if (totalLength != 0){
 
 		for (var i = 0; i < activityArray.length; i++ ){
 			var type = activityArray[i].getType();
@@ -103,23 +102,27 @@ function DayView(container, model){
 		this.dayInfoBox(); //init
 		//fill box
 		var colors = ["#E0EBFF","#FFD6CC","#D6EAD6","#FFFF66"]
-		for (var i=0; i < array.length; i++){
+
+		for (var i=0; i < totalLength; i++){
 			context.beginPath();
  			context.rect(x, y, width, height);
 			context.fillStyle= colors[i];
    			context.fill();
    			y = y + array[i];
 		}
+	   		
 
-   		//red line
-   		y = height*0.7;
-   		context.beginPath();
-		context.moveTo(0,y);
-		context.lineTo(70,y);
-		context.lineWidth = 3;
-   		context.strokeStyle = '#FF3030';
-		context.stroke();
-	}
+	   	//red line
+  		if (totalLength != 0) {
+	   		y = height*0.7;
+	   		context.beginPath();
+			context.moveTo(0,y);
+			context.lineTo(70,y);
+			context.lineWidth = 3;
+	   		context.strokeStyle = '#FF3030';
+			context.stroke();
+		}
+	
 	}	
 
 	this.fillDayActivity = function(){
