@@ -11,12 +11,18 @@ function DayView(container, model){
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", "dayInfo");
 		
+
 		var dayStartTime = $("<div>");
 		dayStartTime.attr("id", "addDayStartTime");
 		dayStartTime.html("Start time:");
-		this.dayStartTimeBox = $("<div>");
+		/*this.dayStartTimeBox = $("<div>");
 		this.dayStartTimeBox.attr("id", "addDayStartTimeBox");
-		this.dayStartTimeBox.html(model.days[this.dayID].getStart());
+		this.dayStartTimeBox.html(model.days[this.dayID].getStart());*/
+		this.dayStartTimeBox = $("<input>");
+		this.dayStartTimeBox.attr("id","addDayStartTimeBox");
+		this.dayStartTimeBox.attr("type","text");
+		this.dayStartTimeBox.attr("value", model.days[this.dayID].getStart());
+
 		dayStartTime.append(this.dayStartTimeBox);
 		dayInfo.append(dayStartTime);		
 		
@@ -56,8 +62,9 @@ function DayView(container, model){
 		container.append(dayObject);
 	
 	this.dayInfoBox = function() {
-		
-		this.dayStartTimeBox.html(this.model.days[this.dayID].getStart());
+
+		this.dayStartTimeBox.attr("value", this.model.days[this.dayID].getStart());
+		/*this.dayStartTimeBox.html(this.model.days[this.dayID].getStart());*/
 		this.dayEndTimeBox.html(this.model.days[this.dayID].getEnd());
 		this.totalTime.html(this.model.days[this.dayID].getTotalLength() + " min");
 	}
@@ -157,12 +164,24 @@ function DayView(container, model){
 		}
 	}
 
+	//should be in controller?
+	this.dayStartTimeBox.blur(
+		function(){
+		console.log("onblur");
+		var time = $(this).val().split(":");
+		console.log(model.days[this.dayID]);
+		model.days[this.dayID].setStart(time[0],time[1]);	
+		console.log(model.days[this.dayID].getStart());	
+	});
+
+
 	model.addObserver(this);	
 	this.update = function(arg){
-	this.dayInfoBox();
-	this.dayInfoBoxStatus();
-	if(arg == this.dayID){
-		this.fillDayActivity();
-		}
+		this.dayInfoBox();
+		this.dayInfoBoxStatus();
+
+		if(arg == this.dayID){
+			this.fillDayActivity();
+			}
 	}	
 }

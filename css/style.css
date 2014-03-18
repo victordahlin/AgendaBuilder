@@ -17,7 +17,7 @@ div#dayBreaks {
 	right:0;
 }
 
-div#addDayStartTimeBox {
+input#addDayStartTimeBox {
 	border:2px solid #787878;
 	padding:0 10px;
 	margin-right: 10px;
