@@ -10,6 +10,7 @@ var ActivitiesController = function(view, model) {
 			$("#activitiesContainer").hide();
 			$("#addButtonContainer").hide();
 			$("#addDayButton").hide();
+			$("#updateActivity").hide();
 			$("#popup").show();
 		}
 	);
@@ -32,6 +33,19 @@ var ActivitiesController = function(view, model) {
             connectWith : ".dayActivity, #activitiesContainer"
 			
      	});
+
+	var edit = function() {
+		$("#activitiesContainer").hide();
+		$("#addButtonContainer").hide();
+		$("#addDayButton").hide();
+		$("#popup").show();
+		$("#updateActivity").show();
+
+		$("#saveActivity").hide();
+		$("#cancelActivity").hide();
+
+		console.log(model.getTypeId);
+	}
 		
 	model.addObserver(this);
 	this.update = function(arg){
@@ -41,6 +55,9 @@ var ActivitiesController = function(view, model) {
 		break;
 		default : view.fillActivities(); 
 				$("#activitiesContainer").sortable( "refresh" );
+				$("li#activity.activityObject").dblclick(function() { 
+					edit(); 
+				});
 		}
 	}
 }
