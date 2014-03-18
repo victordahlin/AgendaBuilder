@@ -92,7 +92,7 @@ function Day(startH,startM) {
 		var end = this._start + this.getTotalLength();
 		var hour = Math.floor(end/60);
 		var min = end % 60;
-		console.log(hour + " " + min);
+		//console.log(hour + " " + min);
 		if( hour < 10 ) {
 			hour = "0" + hour;
 		}

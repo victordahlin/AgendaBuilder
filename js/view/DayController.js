@@ -42,14 +42,14 @@ var DayController = function(view,model) {
             connectWith : ".dayActivity, #activitiesContainer"
      	});
 
-/*
+
 	view.dayStartTimeBox.blur(
 		function(){
 		console.log("onblur");
 		var time = $(this).val().split(":");
-		this.model.days[view.dayID].setStart(time[0],time[1]);	
+		model.days[view.dayID].setStart(time[0],time[1]);	
 		console.log(this.model.days[view.dayID].getStart());	
-	});*/
+	});
 
 	model.addObserver(this);
        
