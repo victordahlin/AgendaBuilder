@@ -46,7 +46,7 @@ ul.dayActivity {
 	margin-top: 15px;
 	padding:0;
 }
-
+/*
 div#addDayButton {
 	width: 125px;
 	height: 100%;
@@ -63,7 +63,7 @@ div#addDayButton {
 	text-align: center;
 	font-weight: bold;
 	color:#FFFFFF;
-}
+}*/
 
 ul#activitiesContainer, ul#addActivity, ul.dayActivity {
 	list-style-type: none;
@@ -95,14 +95,14 @@ div#addButtonContainer {
 	margin:2%;
 
 }
-
+/*
 button#addActivityButton{
 	border:2px solid #006600;
 	background-color: #66CC00;
 	font-weight: bold;
 	color:#FFFFFF;
 	width: 220px;
-}
+}*/
 
 li#activity.activityObject { 
 	height: 27px; 
@@ -150,6 +150,7 @@ div#popup {
 	height: auto;
 }
 
+/*
 #saveActivity {
 	border:2px solid #006600;
 	background-color: #66CC00;
@@ -163,7 +164,8 @@ div#popup {
 	font-weight: bold;
 	color:#FFFFFF;
 	float:left;
-}
+}*/
+/*
 #name{
 	width:160px;
 	margin-top: 20px;
@@ -180,4 +182,18 @@ div#popup {
 #description{
 	width:160px;
 	margin-bottom: 20px
+}*/
+/* buttons ***********/
+
+button#addActivityButton{
+	background-color: #80CC80;
+}
+button#addDayButton{
+	background-color: #80CC80;
+	display: block; 
+	margin: 20px auto;
+	padding: 20px auto;
+}
+div#formButtons{
+	float:right;
 }
