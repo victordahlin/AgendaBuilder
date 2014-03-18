@@ -90,13 +90,34 @@ function Day(startH,startM) {
 	// the end time of the day
 	this.getEnd = function() {
 		var end = this._start + this.getTotalLength();
-		return Math.floor(end/60) + ":" + end % 60;
+		var hour = Math.floor(end/60);
+		var min = end % 60;
+		console.log(hour + " " + min);
+		if( hour < 10 ) {
+			hour = "0" + hour;
+		}
+
+		if( min < 10 ) {
+			min = "0" + min;
+		}
+		return hour + ":" + min;
 	};
 	
 	// returns the string representation Hours:Minutes of 
 	// the start time of the day
 	this.getStart = function() {
-		return Math.floor(this._start/60) + ":" + this._start % 60;
+		var hour = Math.floor(this._start/60);
+		var min  = this._start % 60;
+		//console.log(hour + " " + min);
+		if( hour < 10 ) {
+			hour = "0" + hour;
+		}
+
+		if( min < 10 ) {
+			min = "0" + min;
+		}
+		//console.log(hour);
+		return  hour + ":" + min;
 	};
 	
 	// returns the length (in minutes) of activities of certain type

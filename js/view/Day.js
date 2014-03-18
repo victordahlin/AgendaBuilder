@@ -6,7 +6,7 @@ function DayView(container, model){
 	
 		var dayObject = $("<div>");
 		dayObject.attr("id", this.dayID);
-		dayObject.addClass("col-xs-6 col-md-5");		
+		dayObject.addClass("col-xs-8 col-md-");		
 		
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", "dayInfo");
