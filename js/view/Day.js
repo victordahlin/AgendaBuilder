@@ -6,7 +6,7 @@ function DayView(container, model){
 	
 		var dayObject = $("<div>");
 		dayObject.attr("id", this.dayID);
-		dayObject.addClass("col-xs-8 col-md-3");		
+		dayObject.addClass("col-xs-6 col-md-5");		
 		
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", "dayInfo");
@@ -42,7 +42,7 @@ function DayView(container, model){
 		this.totalTime.attr("id", "dayTotalLengthBox");
 		this.totalTime.html("0");
 		dayTotalLength.append(this.totalTime);
-		//dayTotalLength.append(" min");
+		dayTotalLength.append(" min");
 		dayInfo.append(dayTotalLength);
 				
 		this.dayActivity = $("<ul>");
@@ -66,7 +66,7 @@ function DayView(container, model){
 		this.dayStartTimeBox.attr("value", this.model.days[this.dayID].getStart());
 		/*this.dayStartTimeBox.html(this.model.days[this.dayID].getStart());*/
 		this.dayEndTimeBox.html(this.model.days[this.dayID].getEnd());
-		this.totalTime.html(this.model.days[this.dayID].getTotalLength() + " min");
+		this.totalTime.html(this.model.days[this.dayID].getTotalLength());
 	}
 	this.dayInfoBox(); // init
 
@@ -163,16 +163,6 @@ function DayView(container, model){
 			console.log("Filled dayActivity");
 		}
 	}
-
-	//should be in controller?
-	this.dayStartTimeBox.blur(
-		function(){
-		console.log("onblur");
-		var time = $(this).val().split(":");
-		console.log(model.days[this.dayID]);
-		model.days[this.dayID].setStart(time[0],time[1]);	
-		console.log(model.days[this.dayID].getStart());	
-	});
 
 
 	model.addObserver(this);	
