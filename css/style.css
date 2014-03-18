@@ -24,6 +24,10 @@ div#addDayStartTimeBox {
 	float:right;
 }
 
+span#dayTotalLengthBox {
+	padding-left:30px;	
+}
+
 div#addDayEndTime, div#addDayStartTime, div#dayTotalLength {
 	height: 25px; 
 	width: auto;
@@ -70,6 +74,7 @@ ul#activitiesContainer, ul#addActivity, ul.dayActivity {
 div#activities, ul#activitiesContainer {
 	padding-right:40px;
 	border-right: 1px solid #888888;
+	height: 100%;
 }
 
 div#activities {

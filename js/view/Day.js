@@ -36,7 +36,7 @@ function DayView(container, model){
 		this.totalTime.attr("id", "dayTotalLengthBox");
 		this.totalTime.html("0");
 		dayTotalLength.append(this.totalTime);
-		dayTotalLength.append(" min");
+		//dayTotalLength.append(" min");
 		dayInfo.append(dayTotalLength);
 				
 		this.dayActivity = $("<ul>");
@@ -59,7 +59,7 @@ function DayView(container, model){
 		
 		this.dayStartTimeBox.html(this.model.days[this.dayID].getStart());
 		this.dayEndTimeBox.html(this.model.days[this.dayID].getEnd());
-		this.totalTime.html(this.model.days[this.dayID].getTotalLength());
+		this.totalTime.html(this.model.days[this.dayID].getTotalLength() + " min");
 	}
 	this.dayInfoBox(); // init
 
