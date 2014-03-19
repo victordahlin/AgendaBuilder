@@ -2,12 +2,10 @@ div#dayContainer {
 	padding-top:2%;
 }
 
-div.dayInfo {
-	width: 170px;
-	height: 70px;
-	position: relative;
+input#dayStartTimeBox {
+	width: 65px;
 }
-
+/*
 div#dayBreaks {
 	width: 70px;
 	height: 70px;
@@ -15,8 +13,9 @@ div#dayBreaks {
 	top:0;
     margin-right:-80px;
 	right:0;
-}
+}/*
 
+/*
 input#addDayStartTimeBox {
 	border:2px solid #787878;
 	padding:0 10px;
@@ -38,13 +37,18 @@ div#addDayEndTimeBox {
 	margin-right: 10px;
 	float:right;
 }
-
+*/
 ul.dayActivity {
-	width: 250px;
+
+	/*width: 250px;*/
 	height:410px;
 	border:2px dashed #888888;
 	margin-top: 15px;
-	padding:0;
+	/*padding:0;*/
+	display: block;
+	/*overflow: hidden;*/
+
+
 }
 /*
 div#addDayButton {
@@ -67,28 +71,31 @@ div#addDayButton {
 
 ul#activitiesContainer, ul#addActivity, ul.dayActivity {
 	list-style-type: none;
+	display: block;
+	padding: 0;
 }
 
 /*  ADDACTIVITY *************************************************/
 
 div#activities, ul#activitiesContainer {
-	padding-right:40px;
+	/*padding-right:40px;*/
 	border-right: 1px solid #888888;
 	height: 100%;
 }
 
 div#activities {
 	padding-top: 25px;
-	width: auto;
+	/*width: auto;*/
 	height: 100%;
+
 }
 
 ul#activitiesContainer {
-	width: 250px;
+	/*width: 250px;*/
 	height: 500px;
 	border: 2px solid #888888;
-	margin:0;
-	padding:0;
+	/*margin:0;
+	padding:0;*/
 }
 
 div#addButtonContainer {
@@ -112,13 +119,13 @@ li#activity.activityObject {
 }
 
 div#activityTime{
-	padding: 0 0 0 10px; 
-	margin:0;
+	/*padding: 0 0 0 10px; 
+	margin:0;*/
 }
 div#activityName{
-	height:25px;
-	text-align: left;
-	padding: 0 0 0 5px;
+	height:auto;
+	text-align: center;
+	/*padding: 0 0 0 5px;*/
 	color:#FFFFFF;
 	font-weight: bold;
 }
@@ -146,7 +153,7 @@ textarea {
 /*  ADDACTIVITY POPUP ***********************************************************/
 
 div#popup {
-	width: 250px;
+	/*width: 250px;*/
 	height: auto;
 }
 

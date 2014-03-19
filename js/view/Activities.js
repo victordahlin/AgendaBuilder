@@ -22,11 +22,11 @@ var Activities = function (container,model) {
 
 			timeElement.html(time + " min");
 			timeElement.attr("id","activityTime");
-			timeElement.addClass("col-md-3");
+			timeElement.addClass("col-xs-4");
 
 			nameElement.html(name);
 			nameElement.addClass(type);
-			nameElement.addClass("col-md-8");
+			nameElement.addClass("col-xs-8");
 			nameElement.attr("id","activityName");
 
 			div.append(timeElement);
