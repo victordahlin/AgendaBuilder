@@ -1,115 +1,67 @@
+/*  DAY *************************************************/
+
 div#dayContainer {
 	padding-top:2%;
 }
-
 input#dayStartTimeBox {
-	width: 65px;
+	width: 60px;
+	text-align: center;
 }
-/*
-div#dayBreaks {
-	width: 70px;
-	height: 70px;
-	position: absolute;
-	top:0;
-    margin-right:-80px;
-	right:0;
-}/*
-
-/*
-input#addDayStartTimeBox {
-	border:2px solid #787878;
-	padding:0 10px;
-	margin-right: 10px;
-	float:right;
-}
-
-span#dayTotalLengthBox {
-	padding-left:30px;	
-}
-
-div#addDayEndTime, div#addDayStartTime, div#dayTotalLength {
-	height: 25px; 
-	width: auto;
-}
-
-div#addDayEndTimeBox {
-	padding:0 10px;
-	margin-right: 10px;
-	float:right;
-}
-*/
 ul.dayActivity {
-
-	/*width: 250px;*/
 	height:410px;
 	border:2px dashed #888888;
-	margin-top: 15px;
-	/*padding:0;*/
 	display: block;
-	/*overflow: hidden;*/
-
-
 }
-/*
-div#addDayButton {
-	width: 125px;
-	height: 100%;
-	padding: 20px;
-	margin-top: 25px;
-	margin-bottom: 0;
-	margin-right: 50px;
-	margin-left: 50px;
-}
-
-div#addDayButton {
-	border:2px solid #006600;
-	background-color: #66CC00;
-	text-align: center;
-	font-weight: bold;
-	color:#FFFFFF;
-}*/
-
 ul#activitiesContainer, ul#addActivity, ul.dayActivity {
 	list-style-type: none;
 	display: block;
 	padding: 0;
 }
 
-/*  ADDACTIVITY *************************************************/
-
-div#activities, ul#activitiesContainer {
-	/*padding-right:40px;*/
-	border-right: 1px solid #888888;
-	height: 100%;
+.dayObject{
+	padding-left: 20px;
 }
 
-div#activities {
-	padding-top: 25px;
-	/*width: auto;*/
+#deleteDay{
+	margin-bottom: 10px;
+	margin-right: 5px;
+	float: right;
+	width: 60px;
+}
+
+#dayBreaks{
+	float:right;
+}
+
+div#dayStartTime, div#addDayEndTime, div#dayTotalLength{
+	margin-bottom: 10px;
+}
+
+
+/*  ADDACTIVITY *************************************************/
+
+/*div#activities, ul#activitiesContainer {
+	
 	height: 100%;
+}*/
+
+div#activities {
+	border-right: 1px solid #888888;
+	padding-top: 25px;
+	height: 100%;
+	position: fixed
 
 }
 
 ul#activitiesContainer {
-	/*width: 250px;*/
-	height: 500px;
+	height: 75%;
 	border: 2px solid #888888;
-	/*margin:0;
-	padding:0;*/
 }
 
 div#addButtonContainer {
 	margin:2%;
 
 }
-/*
-button#addActivityButton{
-	border:2px solid #006600;
-	background-color: #66CC00;
-	font-weight: bold;
-	color:#FFFFFF;
-	width: 220px;
-}*/
 
 li#activity.activityObject { 
 	height: 27px; 
@@ -118,14 +70,9 @@ li#activity.activityObject {
 	padding:0;
 }
 
-div#activityTime{
-	/*padding: 0 0 0 10px; 
-	margin:0;*/
-}
 div#activityName{
 	height:auto;
 	text-align: center;
-	/*padding: 0 0 0 5px;*/
 	color:#FFFFFF;
 	font-weight: bold;
 }
@@ -153,43 +100,9 @@ textarea {
 /*  ADDACTIVITY POPUP ***********************************************************/
 
 div#popup {
-	/*width: 250px;*/
 	height: auto;
 }
 
-/*
-#saveActivity {
-	border:2px solid #006600;
-	background-color: #66CC00;
-	font-weight: bold;
-	color:#FFFFFF;
-	margin-left: 20px
-}
-#cancelActivity{
-	border:2px solid #802828;
-	background-color: #FF5050;
-	font-weight: bold;
-	color:#FFFFFF;
-	float:left;
-}*/
-/*
-#name{
-	width:160px;
-	margin-top: 20px;
-	margin-bottom: 20px
-}
-#length{
-	width:130px;
-	margin-bottom: 20px
-}
-#typeid{
-	width:160px;
-	margin-bottom: 20px
-}
-#description{
-	width:160px;
-	margin-bottom: 20px
-}*/
 /* buttons ***********/
 
 button#addActivityButton{

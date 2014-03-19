@@ -7,7 +7,7 @@ function DayView(container, model){
 		var dayID = model.days.length;
 		var dayObject = $("<div>");
 		dayObject.attr("id", dayID);
-		dayObject.addClass("col-xs-12 col-sm-6 col-md-4");		
+		dayObject.addClass("dayObject col-xs-12 col-sm-6 col-md-4");		
 		
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", dayID);
@@ -26,7 +26,7 @@ function DayView(container, model){
 		label.attr("for","dayStartTimeBox");
 		label.html("start time:");
 		var dayStartTimeBox = $("<input>");
-		dayStartTimeBox.addClass("form-control pull-right");
+		dayStartTimeBox.addClass("form-control input-sm pull-right");
 		dayStartTimeBox.attr("id","dayStartTimeBox");
 		dayStartTimeBox.attr("type","text");
 		dayStartTime.append(label);
@@ -65,6 +65,13 @@ function DayView(container, model){
 		leftColumn.append(dayTotalLength);
 				
 
+		var deleteDayButton = $("<button>");
+		deleteDayButton.attr("type","button");
+		deleteDayButton.addClass("btn btn-sm btn-warning");
+		deleteDayButton.attr("id","deleteDay");
+		deleteDayButton.html("Delete");
+
+
 		var dayBreaks = $("<div>");
 		dayBreaks.attr("id", "dayBreaks");
 		var canvasDiv = $("<canvas>");
@@ -78,6 +85,7 @@ function DayView(container, model){
 		rightColumn.addClass("col-xs-4")
 		rightColumn.attr("id", "rightColumn");
 
+		rightColumn.append(deleteDayButton);
 		rightColumn.append(dayBreaks);
 		dayInfo.append(leftColumn,rightColumn);
 
@@ -190,11 +198,11 @@ function DayView(container, model){
 
 				timeElement.html(time + " min");
 				timeElement.attr("id","activityTime");
-				timeElement.addClass("col-md-3");
+				timeElement.addClass("col-xs-4");
 
 				nameElement.html(name);
 				nameElement.addClass(type);
-				nameElement.addClass("col-md-8");
+				nameElement.addClass("col-xs-8");
 				nameElement.attr("id","activityName");
 
 				div.append(timeElement);

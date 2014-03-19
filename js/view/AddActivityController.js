@@ -17,10 +17,11 @@ var AddActivityController = function(view, model) {
 			var typeid = $("#typeid").val();
 			var description = $("#description").val();
 
+			console.log(typeid);
 
    			if((parseFloat(length) == parseInt(length)) && !isNaN(length)){
 
-				if(name!="" && length!="" && typeid!=""){
+				if(name!="" && length!="" && typeid!="" && typeid != null){
 					var act = new Activity(name,length,typeid,description);
 					model.addParkedActivity(act);
 					
