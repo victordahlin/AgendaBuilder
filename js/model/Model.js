@@ -15,7 +15,7 @@ function Activity(name,length,typeid,description){
 	// sets the name of the activity
 	this.setName = function(name) {
 		_name = name;
-		model.notifyObservers();
+		//model.notifyObservers();
 	}
 
 	// get the name of the activity
@@ -26,7 +26,7 @@ function Activity(name,length,typeid,description){
 	// sets the length of the activity
 	this.setLength = function(length) {
 		_length = length;
-		model.notifyObservers();
+		//model.notifyObservers();
 	}
 
 	// get the name of the activity
@@ -37,7 +37,7 @@ function Activity(name,length,typeid,description){
 	// sets the typeid of the activity
 	this.setTypeId = function(typeid) {
 		_typeid = typeid;
-		model.notifyObservers();
+		//model.notifyObservers();
 	}
 
 	// get the type id of the activity
@@ -48,7 +48,7 @@ function Activity(name,length,typeid,description){
 	// sets the description of the activity
 	this.setDescription = function(description) {
 		_description = description;
-		model.notifyObservers();
+		//model.notifyObservers();
 	}
 
 	// get the description of the activity
@@ -60,7 +60,8 @@ function Activity(name,length,typeid,description){
 	// activity type.
 	this.getType = function () {
 		return ActivityType[_typeid];
-	};
+	}
+	
 }
 
 // This is a day consturctor. You can use it to create days, 
@@ -227,6 +228,15 @@ function Model(){
 		this.notifyObservers("moved");
 		
 	};
+
+	//model to notify once and only once at update of activity
+	this.saveUpdatedActivity = function (container) {
+		if(container == "activitiesContainer"){
+			this.notifyObservers("parked");
+		}else{
+			this.notifyObservers("day");
+		}
+	}
 	
 	//*** OBSERVABLE PATTERN ***
 	var listeners = [];
@@ -242,27 +252,3 @@ function Model(){
 	};
 	//*** END OBSERVABLE PATTERN ***	
 }
-
-// this is the instance of our main model
-// this is what you should use in your application
-/*
-var model = new Model();
-
-
-// you can use this method to create some test data and test your implementation
-function createTestData(){
-	model.addDay();
-	model.addActivity(new Activity("Introduction",10,0,""),0);
-	model.addActivity(new Activity("Idea 1",30,0,""),0);
-	model.addActivity(new Activity("Working in groups",35,1,""),0);
-	model.addActivity(new Activity("Idea 1 discussion",15,2,""),0);
-	model.addActivity(new Activity("Coffee break",20,3,""),0);
-	
-	console.log("Day Start: " + model.days[0].getStart());
-	console.log("Day End: " + model.days[0].getEnd());
-	console.log("Day Length: " + model.days[0].getTotalLength() + " min");
-	$.each(ActivityType,function(index,type){
-		console.log("Day '" + ActivityType[index] + "' Length: " +  model.days[0].getLengthByType(index) + " min");
-	});
-}
-*/

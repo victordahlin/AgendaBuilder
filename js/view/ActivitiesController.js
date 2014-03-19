@@ -1,4 +1,5 @@
 var ActivitiesController = function(view, model) {
+
 	$("#popup").hide();
 
 	view.newActivity.click(
@@ -12,6 +13,9 @@ var ActivitiesController = function(view, model) {
 			$("#addDayButton").hide();
 			$("#updateActivity").hide();
 			$("#popup").show();
+			$("#saveActivity").show();
+			$("#cancelActivity").show();
+
 		}
 	);
 	
@@ -34,18 +38,80 @@ var ActivitiesController = function(view, model) {
 			
      	});
 
-	var edit = function() {
-		$("#activitiesContainer").hide();
-		$("#addButtonContainer").hide();
-		$("#addDayButton").hide();
-		$("#popup").show();
-		$("#updateActivity").show();
+	//$("li#activity.activityObject").dblclick(function() {
+	$(document).on("dblclick", "li#activity.activityObject", function (){
+			var activityIndex = $(this).index();
+			var containerID = $(this).parent().attr("id");
+			console.log(activityIndex);
+			console.log(containerID);
+			$("#popup").data("activityIndex", activityIndex);
+			$("#popup").data("containerID", containerID);
 
-		$("#saveActivity").hide();
-		$("#cancelActivity").hide();
+			if(containerID == "activitiesContainer"){										
+						var activity = model.parkedActivities[activityIndex];
 
-		console.log(model.getTypeId);
-	}
+			}else{				
+						var activity = model.days[containerID]._activities[activityIndex];
+			}
+			$("#name").val(activity.getName());
+			$("#length").val(activity.getLength());
+			$("#typeid").val(activity.getTypeId());
+			$("#description").val(activity.getDescription());					
+			$("#activitiesContainer").hide();
+			$("#addButtonContainer").hide();
+			$("#addDayButton").hide();
+			$("#popup").show();
+			$("#updateActivity").show();
+			$("#saveActivity").hide();
+			$("#cancelActivity").show();
+	});
+
+	var updatebutton = $("#updateActivity");
+		
+
+	updatebutton.on("click", function(){
+
+
+		var activityIndex = $("#popup").data("activityIndex");
+		var containerID = $("#popup").data("containerID");
+		console.log(activityIndex);
+		console.log(containerID);
+		if(containerID == "activitiesContainer"){										
+			var activity = model.parkedActivities[activityIndex];
+
+		}else{				
+			var activity = model.days[containerID]._activities[activityIndex];
+		}
+
+		var name = $("#name").val();
+		var length = $("#length").val();
+		var typeid = $("#typeid").val();
+		var description = $("#description").val();
+
+		if((parseFloat(length) == parseInt(length)) && !isNaN(length)){
+
+			if(name!="" && length!="" && typeid!=""){
+
+				console.log(activity);
+				activity.setName(name);
+				activity.setLength(length);
+				activity.setTypeId(typeid);
+				activity.setDescription(description);
+				model.saveUpdatedActivity(containerID);
+
+				$("#activitiesContainer").show();
+				$("#addButtonContainer").show();
+				$("#addDayButton").show();
+				$("#popup").hide();
+				$("#updateActivity").hide();
+			}else{
+				alert("Fill all o' them boxes");
+			}
+		}else{ 
+			alert("Length must be a whole number")
+		}
+
+	});
 		
 	model.addObserver(this);
 	this.update = function(arg){
@@ -54,10 +120,7 @@ var ActivitiesController = function(view, model) {
 		case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity, #activitiesContainer" );
 		break;
 		default : view.fillActivities(); 
-				$("#activitiesContainer").sortable( "refresh" );
-				$("li#activity.activityObject").dblclick(function() { 
-					edit(); 
-				});
+				$("#activitiesContainer").sortable( "refresh" );				
 		}
 	}
 }
