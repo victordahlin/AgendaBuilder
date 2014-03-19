@@ -1,8 +1,8 @@
-var AddDayController = function(model) {
+var AddDayController = function(view, model) {
 
-	$("#addDayButton").click( function(){ 
-		var day = new DayView($("#dayContainer"), model);
-		new DayController(day,model);
+	view.addDayButtonBox.click( function(){		
+		view.createDay();
+		model.addDay();
 	});	
 
 }

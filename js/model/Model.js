@@ -224,8 +224,8 @@ function Model(){
 			var activity = this.days[oldday]._removeActivity(oldposition);
 			this.days[newday]._addActivity(activity,newposition);
 		}
-		this.notifyObservers(oldday);
-		this.notifyObservers(newday);
+		this.notifyObservers("moved");
+		
 	};
 	
 	//*** OBSERVABLE PATTERN ***
@@ -240,8 +240,7 @@ function Model(){
 	this.addObserver = function (listener) {
 	    listeners.push(listener);
 	};
-	//*** END OBSERVABLE PATTERN ***
-	//add first default day to model	
+	//*** END OBSERVABLE PATTERN ***	
 }
 
 // this is the instance of our main model

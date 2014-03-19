@@ -12,5 +12,5 @@ $(function() {
 	var activitiesController = new ActivitiesController(activities, model);
 	var addActivityController = new AddActivityController(addActivity, model);
 	var dayController = new DayController(dayView,model);
-	var addDayController = new AddDayController(model);
+	var addDayController = new AddDayController(dayView,model);
 });

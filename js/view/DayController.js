@@ -1,6 +1,6 @@
 var DayController = function(view,model) {
 	
-// Nått buggar?
+this.addSortability = function(){
 	$(".dayActivity").sortable({   
         	revert : true,
                       
@@ -20,19 +20,18 @@ var DayController = function(view,model) {
                 model.moveActivity(oldday, oldposition, newday, newposition);                
 
                 ui.item.data("start_pos", newposition);
-				console.log("moved activity to day "+view.dayID);
-        	},
+				console.log("moved activity to day "+ $(this).attr("id"));
+			},
 			stop: function (event, ui) {
-				if(ui.sender == null){
-				console.log("triggered update");
-				var oldday = view.dayID;
-				var newday = view.dayID;; 
+				if(this === ui.item.parent()[0]){				
+				var oldday = $(this).attr("id");
+				var newday = $(this).attr("id"); 
 				var oldposition = ui.item.data("start_pos");
                 var newposition = ui.item.index();
 				/*console.log("oldday", oldday);
-				console.log("newday", newday);*/
+				console.log("newday", newday);
 				console.log("oldpos", oldposition);
-				console.log("newpos", newposition);
+				console.log("newpos", newposition);*/
 				model.moveActivity(oldday, oldposition, newday, newposition);                
 
                 ui.item.data("start_pos", newposition); 
@@ -41,20 +40,13 @@ var DayController = function(view,model) {
         	},
             connectWith : ".dayActivity, #activitiesContainer"
      	});
-
-
-	view.dayStartTimeBox.blur(
-		function(){
-		console.log("onblur");
-		var time = $(this).val().split(":");
-		model.days[view.dayID].setStart(time[0],time[1]);	
-		console.log(this.model.days[view.dayID].getStart());	
-	});
+}
+	this.addSortability();
 
 	model.addObserver(this);
        
     this.update = function(arg){
-	if(arg=="day") $( ".dayActivity" ).sortable( "option", "connectWith", ".dayActivity,#activitiesContainer" );
+	if(arg=="day") this.addSortability();
      }
 
 }
