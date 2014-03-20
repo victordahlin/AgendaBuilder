@@ -24,7 +24,7 @@ function DayView(container, model){
 		dayStartTime.attr("id", "dayStartTime");
 		var label = $("<label>");
 		label.attr("for","dayStartTimeBox");
-		label.html("start time:");
+		label.html("Start time:");
 		var dayStartTimeBox = $("<input>");
 		dayStartTimeBox.addClass("form-control input-sm pull-right");
 		dayStartTimeBox.attr("id","dayStartTimeBox");
@@ -40,7 +40,7 @@ function DayView(container, model){
 		dayEndTime.attr("id", "addDayEndTime");
 		var label = $("<label>");
 		label.attr("for","addDayEndTimeBox");
-		label.html("end time:");	
+		label.html("End time:");	
 		var dayEndTimeBox = $("<span>");
 		dayEndTimeBox.addClass("pull-right");
 		dayEndTimeBox.attr("id", "addDayEndTimeBox");
@@ -54,7 +54,7 @@ function DayView(container, model){
 		dayTotalLength.attr("id", "dayTotalLength");
 		var label = $("<label>");
 		label.attr("for","dayTotalLengthBox");
-		label.html("total minutes");	
+		label.html("Total minutes");	
 		var totalTime = $("<span>");
 		totalTime.addClass("pull-right");
 		totalTime.attr("id", "dayTotalLengthBox");

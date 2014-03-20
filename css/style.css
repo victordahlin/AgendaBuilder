@@ -6,6 +6,7 @@ div#dayContainer {
 input#dayStartTimeBox {
 	width: 60px;
 	text-align: center;
+	font-size: 14px;
 }
 ul.dayActivity {
 	height:410px;
@@ -77,19 +78,19 @@ div#activityName{
 	font-weight: bold;
 }
 .Presentation {
-	border:2px solid #527ACC;
+	/*border:2px solid #527ACC;*/
 	background-color: #E0EBFF;
 }
 .Discussion{
-	border:2px solid #799679;
+	/*border:2px solid #799679;*/
 	background-color: #D6EAD6;
 }
 .Break {
-	border:2px solid #CCCC52;
+	/*border:2px solid #CCCC52;*/
 	background-color: yellow;
 }
 .Group {
-	border:2px solid #991F00;
+	/*border:2px solid #991F00;*/
 	background-color: #FFD6CC;
 }
 
