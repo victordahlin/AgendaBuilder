@@ -1,6 +1,6 @@
 var ActivitiesController = function(view, model) {
 
-	$("#popup").hide();
+	hidePopup();
 
 	view.newActivity.click(
 		function(){
@@ -8,14 +8,7 @@ var ActivitiesController = function(view, model) {
 			$("#length").val("");
 			$("#typeid").val("");
 			$("#description").val("");
-			$("#activitiesContainer").hide();
-			$("#addButtonContainer").hide();
-			$("#addDayButton").hide();
-			$("#updateActivity").hide();
-			$("#popup").show();
-			$("#saveActivity").show();
-			$("#cancelActivity").show();
-			$("#deleteActivity").hide();
+			showPopup("create");
 
 		}
 	);
@@ -33,7 +26,7 @@ var ActivitiesController = function(view, model) {
                 model.moveActivity(oldday, oldposition, newday, newposition);                
 
                 ui.item.data("start_pos", newposition);
-				console.log("parked activity");
+				console.log("parked activity"); //for debug
         	},
             connectWith : ".dayActivity, #activitiesContainer"
 			
@@ -42,9 +35,7 @@ var ActivitiesController = function(view, model) {
 	//$("li#activity.activityObject").dblclick(function() {
 	$(document).on("dblclick", "li#activity.activityObject", function (){
 			var activityIndex = $(this).index();
-			var containerID = $(this).parent().attr("id");
-			console.log(activityIndex);
-			console.log(containerID);
+			var containerID = $(this).parent().attr("id");			
 			$("#popup").data("activityIndex", activityIndex);
 			$("#popup").data("containerID", containerID);
 
@@ -57,15 +48,8 @@ var ActivitiesController = function(view, model) {
 			$("#name").val(activity.getName());
 			$("#length").val(activity.getLength());
 			$("#typeid").val(activity.getTypeId());
-			$("#description").val(activity.getDescription());					
-			$("#activitiesContainer").hide();
-			$("#addButtonContainer").hide();
-			$("#addDayButton").hide();
-			$("#popup").show();
-			$("#updateActivity").show();
-			$("#saveActivity").hide();
-			$("#cancelActivity").show();
-			$("#deleteActivity").show();
+			$("#description").val(activity.getDescription());
+			showPopup("update");
 	});
 
 	var updatebutton = $("#updateActivity");
@@ -73,8 +57,6 @@ var ActivitiesController = function(view, model) {
 
 		var activityIndex = $("#popup").data("activityIndex");
 		var containerID = $("#popup").data("containerID");
-		console.log(activityIndex);
-		console.log(containerID);
 		if(containerID == "activitiesContainer"){										
 			var activity = model.parkedActivities[activityIndex];
 
@@ -91,18 +73,13 @@ var ActivitiesController = function(view, model) {
 
 			if(name!="" && length!="" && typeid!=""){
 
-				console.log(activity);
 				activity.setName(name);
 				activity.setLength(length);
 				activity.setTypeId(typeid);
 				activity.setDescription(description);
 				model.saveUpdatedActivity(containerID);
 
-				$("#activitiesContainer").show();
-				$("#addButtonContainer").show();
-				$("#addDayButton").show();
-				$("#popup").hide();
-				$("#updateActivity").hide();
+				hidePopup();
 			}else{
 				alert("Fill all o' them boxes");
 			}
@@ -119,11 +96,7 @@ var ActivitiesController = function(view, model) {
 		var containerID = $("#popup").data("containerID");		
 		var activityIndex = $("#popup").data("activityIndex");		
 		model.removeActivity(containerID, activityIndex);
-		$("#activitiesContainer").show();
-		$("#addButtonContainer").show();
-		$("#addDayButton").show();
-		$("#popup").hide();
-		$("#updateActivity").hide();	
+		hidePopup();
 	});
 		
 	model.addObserver(this);

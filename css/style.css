@@ -1,3 +1,27 @@
+/* START ************************************************/
+div#startPage{
+ 
+}
+
+h1#startTitle{
+	margin-top: 10%;
+	font-size: 56px;
+}
+
+button#start{
+	margin-top: 30%;
+}
+
+/* Top ************************************************/
+
+div#top{
+
+
+
+}
+
+
+
 /*  DAY *************************************************/
 
 div#dayContainer {
@@ -126,4 +150,5 @@ div#deleteDialog{
 	border:2px solid #991F00;
 
 }
+
 

@@ -9,7 +9,15 @@
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<div class="container-fluid">
+<div id="startPage" class="container-fluid">
+	<h1 id="startTitle" class="text-center row"> Welcome Agend007 </h1>
+	<button id="start" type="button" class="center-block row btn btn-primary btn-lg" onclick="showPlanner()"> Get Started!</button>
+</div>
+<div id="planner" class="container-fluid">
+	
+	<div id= "top" class="row">
+		<h1 class="text-center row"> Agend007 </h1>
+	</div>	
 <div id="activities" class="col-xs-6 col-sm-4 col-md-3">
 	<div id="addButtonContainer">
 		<button id="addActivityButton" type="button" class="btn btn-primary btn-block">+ Add activity</button>
@@ -50,6 +58,7 @@
 
 <!-- The application JavaScript code -->
 <script type="text/javascript" src="js/model/Model.js"></script>
+<script type="text/javascript" src="js/view/MainController.js"></script>
 <script type="text/javascript" src="js/view/Activities.js"></script>
 <script type="text/javascript" src="js/view/ActivitiesController.js"></script>
 <script type="text/javascript" src="js/view/AddActivity.js"></script>
