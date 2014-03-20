@@ -113,17 +113,23 @@ var ActivitiesController = function(view, model) {
 	});
 
 	var deletebutton = $("#deleteActivity");
-	deletebutton.on("click",function(){
-	//do confirm prompt			
-		
-		var containerID = $("#popup").data("containerID");		
-		var activityIndex = $("#popup").data("activityIndex");		
-		model.removeActivity(containerID, activityIndex);
-		$("#activitiesContainer").show();
-		$("#addButtonContainer").show();
-		$("#addDayButton").show();
-		$("#popup").hide();
-		$("#updateActivity").hide();	
+	deletebutton.on("click",function(){		
+
+		$("#modalButtonOK").click(function(){
+			var pressed = $(this).attr("value");
+
+			if(pressed == "OK") {
+				var containerID = $("#popup").data("containerID");		
+				var activityIndex = $("#popup").data("activityIndex");		
+				model.removeActivity(containerID, activityIndex);
+				$("#activitiesContainer").show();
+				$("#addButtonContainer").show();
+				$("#addDayButton").show();
+				$("#popup").hide();
+				$("#updateActivity").hide();
+			}
+			
+		});
 	});
 		
 	model.addObserver(this);
