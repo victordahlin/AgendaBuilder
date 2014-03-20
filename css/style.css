@@ -15,9 +15,8 @@ button#start{
 /* Top ************************************************/
 
 div#top{
-
-
-
+border-bottom: 2px solid black;
+#gradient > .radial(#333; #000);
 }
 
 

@@ -90,13 +90,19 @@ var ActivitiesController = function(view, model) {
 	});
 
 	var deletebutton = $("#deleteActivity");
-	deletebutton.on("click",function(){
-	//do confirm prompt			
-		
-		var containerID = $("#popup").data("containerID");		
-		var activityIndex = $("#popup").data("activityIndex");		
-		model.removeActivity(containerID, activityIndex);
-		hidePopup();
+	deletebutton.on("click",function(){		
+
+		$("#modalButtonOK").click(function(){
+			var pressed = $(this).attr("value");
+
+			if(pressed == "OK") {
+				var containerID = $("#popup").data("containerID");		
+				var activityIndex = $("#popup").data("activityIndex");		
+				model.removeActivity(containerID, activityIndex);
+				hidePopup();
+			}
+			
+		});
 	});
 		
 	model.addObserver(this);
