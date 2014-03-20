@@ -36,15 +36,17 @@ var AddActivityController = function(view, model) {
 					$("#addDayButton").show();
 				}
 				else{
-					//console.log($(".modal-content"));
-					//$("#myModalLabel").html("");
+					$('#modalBox').modal('toggle');
+					$("#myModalLabel").html("");
+					$("#modalBody").html("Fill all o' them boxes");
+					$("#modalButtonCancel").hide();
 				}
 			}
 			else { 
-				//$(".form-control").html("test");
-				//console.log($(".modal-content"));
-				//$("#myModalLabel").html("");
-				//$("#myModalBody").html("Fill all o' them boxes");
+				$('#modalBox').modal('toggle');
+				$("#myModalLabel").html("");
+				$("#modalBody").html("Fill all o' them boxes");
+				$("#modalButtonCancel").hide();
 			}
 		}
 	);
@@ -98,16 +100,24 @@ var AddActivityController = function(view, model) {
 
 				hidePopup();
 			}else{
-				//alert("Fill all o' them boxes");
+
+				$("#myModalLabel").html("");
+				$("#modalBody").html("Fill all o' them boxes");
+				$("#modalButtonCancel").hide();
 			}
 		}else{ 
-			//alert("Length must be a whole number")
+				$("#myModalLabel").html("");
+				$("#modalBody").html("Fill all o' them boxes");
+				$("#modalButtonCancel").hide();
 		}
 
 	});
 
 	var deletebutton = $("#deleteActivity");
 	deletebutton.on("click",function(){		
+		$("#myModalLabel").html("Confirm remove activity");
+		$("#modalBody").html("Are you sure you want to remove this activity?");
+		$("#modalButtonCancel").show();
 
 		$("#modalButtonOK").click(function(){
 			var pressed = $(this).attr("value");
