@@ -1,6 +1,6 @@
 var AddActivityController = function(view, model) {
 
-	//hidePopup();
+	hidePopup();
 
 	// When user press cancel the activities will show
 	// and hides the popup box
@@ -36,12 +36,18 @@ var AddActivityController = function(view, model) {
 					$("#addDayButton").show();
 				}
 				else{
+					//console.log($(".modal-content"));
+					//$("#myModalLabel").html("");
 				}
 			}
-			else { }
+			else { 
+				//$(".form-control").html("test");
+				//console.log($(".modal-content"));
+				//$("#myModalLabel").html("");
+				//$("#myModalBody").html("Fill all o' them boxes");
+			}
 		}
 	);
-
 
 	$(document).on("dblclick", "li#activity.activityObject", function (){
 		var activityIndex = $(this).index();
