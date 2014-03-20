@@ -230,12 +230,26 @@ function Model(){
 	};
 
 	//model to notify once and only once at update of activity
-	this.saveUpdatedActivity = function (container) {
-		if(container == "activitiesContainer"){
-			this.notifyObservers("parked");
+	this.saveUpdatedActivity = function (dayID) {
+		if(dayID == "activitiesContainer"){
+			this.notifyObservers("parked");			
 		}else{
 			this.notifyObservers("day");
 		}
+	}
+
+	/*this.removeDay = function(dayID){
+		this.days.splice(dayID,1);
+	}*/
+
+	this.removeActivity = function(dayID, position){
+		if(dayID == "activitiesContainer"){
+			this.removeParkedActivity(position);
+			this.notifyObservers("parked");
+		}else{
+			this.days[dayID]._removeActivity(position);
+			this.notifyObservers("day");
+		}		
 	}
 	
 	//*** OBSERVABLE PATTERN ***

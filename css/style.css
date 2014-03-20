@@ -114,6 +114,15 @@ button#addDayButton{
 	margin: 20px auto;
 	padding: 20px auto;
 }
-div#formButtons{
-	float:right;
+
+button#cancelActivity{
+margin-right: 10px!important; 
+
 }
+
+div#deleteDialog{
+	background-color: white;
+	border:2px solid #991F00;
+
+}
+

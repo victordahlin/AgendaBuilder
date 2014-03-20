@@ -65,11 +65,12 @@ function DayView(container, model){
 		leftColumn.append(dayTotalLength);
 				
 
-		var deleteDayButton = $("<button>");
+		/*var deleteDayButton = $("<button>");
 		deleteDayButton.attr("type","button");
 		deleteDayButton.addClass("btn btn-sm btn-warning");
 		deleteDayButton.attr("id","deleteDay");
-		deleteDayButton.html("Delete");
+		deleteDayButton.val(dayID);
+		deleteDayButton.html("Delete");*/
 
 
 		var dayBreaks = $("<div>");
@@ -85,7 +86,7 @@ function DayView(container, model){
 		rightColumn.addClass("col-xs-4")
 		rightColumn.attr("id", "rightColumn");
 
-		rightColumn.append(deleteDayButton);
+		//rightColumn.append(deleteDayButton);
 		rightColumn.append(dayBreaks);
 		dayInfo.append(leftColumn,rightColumn);
 

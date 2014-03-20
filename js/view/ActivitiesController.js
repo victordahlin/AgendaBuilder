@@ -15,6 +15,7 @@ var ActivitiesController = function(view, model) {
 			$("#popup").show();
 			$("#saveActivity").show();
 			$("#cancelActivity").show();
+			$("#deleteActivity").hide();
 
 		}
 	);
@@ -64,13 +65,11 @@ var ActivitiesController = function(view, model) {
 			$("#updateActivity").show();
 			$("#saveActivity").hide();
 			$("#cancelActivity").show();
+			$("#deleteActivity").show();
 	});
 
 	var updatebutton = $("#updateActivity");
-		
-
 	updatebutton.on("click", function(){
-
 
 		var activityIndex = $("#popup").data("activityIndex");
 		var containerID = $("#popup").data("containerID");
@@ -111,6 +110,20 @@ var ActivitiesController = function(view, model) {
 			alert("Length must be a whole number")
 		}
 
+	});
+
+	var deletebutton = $("#deleteActivity");
+	deletebutton.on("click",function(){
+	//do confirm prompt			
+		
+		var containerID = $("#popup").data("containerID");		
+		var activityIndex = $("#popup").data("activityIndex");		
+		model.removeActivity(containerID, activityIndex);
+		$("#activitiesContainer").show();
+		$("#addButtonContainer").show();
+		$("#addDayButton").show();
+		$("#popup").hide();
+		$("#updateActivity").hide();	
 	});
 		
 	model.addObserver(this);
