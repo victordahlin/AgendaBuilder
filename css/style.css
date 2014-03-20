@@ -16,7 +16,6 @@ button#start{
 
 div#top{
 border-bottom: 2px solid black;
-#gradient > .radial(#333; #000);
 }
 
 
@@ -63,17 +62,11 @@ div#dayStartTime, div#addDayEndTime, div#dayTotalLength{
 
 
 /*  ADDACTIVITY *************************************************/
-
-/*div#activities, ul#activitiesContainer {
-	
-	height: 100%;
-}*/
-
 div#activities {
 	border-right: 1px solid #888888;
 	padding-top: 25px;
 	height: 100%;
-	position: fixed
+	position: fixed;
 
 }
 
@@ -83,6 +76,7 @@ ul#activitiesContainer {
 }
 
 div#addButtonContainer {
+	padding-top:2%;
 	margin:2%;
 
 }
@@ -122,9 +116,9 @@ textarea {
 }
 
 /*  ADDACTIVITY POPUP ***********************************************************/
-
 div#popup {
 	height: auto;
+	padding-top:2%;
 }
 
 /* buttons ***********/

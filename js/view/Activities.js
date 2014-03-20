@@ -3,7 +3,9 @@ var Activities = function (container,model) {
 	this.newActivity = container.find("#addActivityButton");
 	this.activities = $(container.find("#activitiesContainer"));	
 
-	
+	// This function will parked activities in model and 
+	// create dynamic HTML and grab values and finally
+	// append this list to our HTML document. 
 	this.fillActivities = function(){
 		this.activities.empty();
 		var array = model.parkedActivities;
@@ -13,7 +15,7 @@ var Activities = function (container,model) {
 			var nameElement = $("<div>");
 
 			div.attr("id","activity");
-			div.data("start_pos", i)
+			div.data("start_pos", i);
 			div.addClass("activityObject");
 
 			var name = array[i].getName();
@@ -34,6 +36,7 @@ var Activities = function (container,model) {
 			this.activities.append(div);
 		}
 
+		// Keeps order of all activities
 		this.activities.sortable({
 		items : "> li",
 		connectWith : ".dayActivity",
@@ -42,10 +45,12 @@ var Activities = function (container,model) {
 		
 	}
 
+	// Check for parked activities otherwise this method
+	// will be called multiple times
 	model.addObserver(this);
 	this.update = function(arg){
 		if(arg=="parked"){
-		this.fillActivities();
+			this.fillActivities();
 		}
 	}
 

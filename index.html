@@ -15,7 +15,7 @@
 	<button id="start" type="button" class="center-block row btn btn-primary btn-lg" onclick="showPlanner()"> Get Started!</button>
 </div>
 
-<!-- Modal -->
+<!-- Confirm box -->
 <div class="modal fade" id="modalBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-offset="5">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -33,12 +33,13 @@
     </div>
   </div>
 </div>
+
 <!-- Planner -->
-<div id="planner" class="container-fluid">
-	<div id= "top">
-		<h1> Agenda Builder </h1>
-	</div>	
+<div id="planner" class="container-fluid">	
 	<div id="activities" class="col-xs-6 col-sm-4 col-md-3">
+	<div id= "top">
+		<h3>Agenda Builder</h3>
+	</div>
 	<div id="addButtonContainer">
 		<button id="addActivityButton" type="button" class="btn btn-primary btn-block">+ Add activity</button>
 	</div>
@@ -57,11 +58,10 @@
 		<textarea class="form-control form-group" id="description" rows="10" placeholder="Description"></textarea>
 		
 		<div id="formButtons" class="form.group">
-			<button id="deleteActivity" type="button" class="btn btn-warning btn-sm pull-left" data-toggle="modal" data-target="#modalBox" value="Delete">Delete</button>			
-			<button id="saveActivity" type="button" class="btn btn-success btn-sm pull-right" value="Save">Save</button>			
+			<button id="deleteActivity" type="button" class="btn btn-warning btn-sm pull-left" data-toggle="modal" data-target="#modalBox" value="Delete">Delete</button>
+			<button id="saveActivity" type="button" class="btn btn-success btn-sm pull-right" data-toggle="modal" data-target="#modalBox" value="Save">Save</button>	
 			<button id="updateActivity" type="button" class="btn btn-success btn-sm pull-right" value="Update">Update</button>
 			<button id="cancelActivity" type="button" class="btn btn-danger btn-sm pull-right" value="Cancel">Cancel</button>
-
 		</div>		
 	</div>
 	<button id="addDayButton" type="button" class="btn btn-primary btn-lg" >+Add a day</button>
@@ -78,14 +78,18 @@
 
 <!-- The application JavaScript code -->
 <script type="text/javascript" src="js/model/Model.js"></script>
-<script type="text/javascript" src="js/view/MainController.js"></script>
+<script type="text/javascript" src="js/controllers/MainController.js"></script>
+
 <script type="text/javascript" src="js/view/Activities.js"></script>
-<script type="text/javascript" src="js/view/ActivitiesController.js"></script>
+<script type="text/javascript" src="js/controllers/ActivitiesController.js"></script>
+
 <script type="text/javascript" src="js/view/AddActivity.js"></script>
-<script type="text/javascript" src="js/view/AddActivityController.js"></script>
+<script type="text/javascript" src="js/controllers/AddActivityController.js"></script>
+
 <script type="text/javascript" src="js/view/Day.js"></script>
 <script type="text/javascript" src="js/view/DayController.js"></script>
-<script type="text/javascript" src="js/view/AddDayController.js"></script>
+<script type="text/javascript" src="js/controllers/AddDayController.js"></script>
+
 <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
