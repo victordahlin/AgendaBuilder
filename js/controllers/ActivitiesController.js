@@ -100,7 +100,7 @@ var ActivitiesController = function(view, model) {
 	});
 
 	var deletebutton = $("#deleteActivity");
-	//sets on click-listener to the deletebutton in the popup
+	//sets on click-listener to the delete button in the popup
 	//brings forth a confirmation prompt.
 	deletebutton.click(function(){		
 		showModalBox();

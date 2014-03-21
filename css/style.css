@@ -19,12 +19,22 @@ border-bottom: 2px solid black;
 }
 
 
+/*  HelpButton *****************************************/
+
+button#helpButton{
+	margin : 5px;
+}
 
 /*  DAY *************************************************/
 
 div#dayContainer {
 	padding-top:2%;
 }
+
+label#dayLabel{
+	margin-left: 5px;
+}
+
 input#dayStartTimeBox {
 	width: 60px;
 	text-align: center;

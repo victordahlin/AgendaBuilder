@@ -7,11 +7,16 @@ function DayView(container, model){
 		var dayID = model.days.length;
 		var dayObject = $("<div>");
 		dayObject.attr("id", dayID);
+		var dayLabel = $("<label>");
+		dayLabel.attr("id", "dayLabel");
+		dayLabel.text("Day "+(dayID+1));
+		dayObject.append(dayLabel);
 		dayObject.addClass("dayObject col-xs-12 col-sm-6 col-md-4");		
 		
 		var dayInfo = $("<div>");
 		dayInfo.attr("id", dayID);
 		dayInfo.addClass("dayInfo row");
+		
 
 		//left column
 		var leftColumn = $("<div>");
