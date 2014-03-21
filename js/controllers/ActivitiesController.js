@@ -83,10 +83,7 @@ var ActivitiesController = function(view, model) {
 					activity.setTypeId(typeid);
 					activity.setDescription(description);
 					model.saveUpdatedActivity(containerID);
-					
-					// Method 
-					/*showModalBox();
-					$("#modalBody").html("The activity has been updated!");		*/
+				
 					hidePopup();
 				}else{
 					showModalBox();
