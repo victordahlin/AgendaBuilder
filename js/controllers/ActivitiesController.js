@@ -49,11 +49,22 @@ var ActivitiesController = function(view, model) {
 	});
 
 
+	/*
+	Start modal box and hide buttons 
+	*/
+	function showModalBox() {
+		$('#modalBox').modal('toggle');
+		$("#myModalLabel").html("");
+		$("#modalButtonCancel").hide();
+		$("#modalButtonRemove").hide();
+		$("#modalButtonOK").show();
+	}
+
 	var updatebutton = $("#updateActivity");
 	
-//sets on-click listener to the update button in the "popup",
-//when clicked, data i validated and if valid saved to the 
-//activity in the model
+	//sets on-click listener to the update button in the "popup",
+	//when clicked, data i validated and if valid saved to the 
+	//activity in the model
 	updatebutton.on("click", function(){
 
 		var type = null;
@@ -84,33 +95,22 @@ var ActivitiesController = function(view, model) {
 					activity.setTypeId(typeid);
 					activity.setDescription(description);
 					model.saveUpdatedActivity(containerID);
-					$("#myModalLabel").html("");
-					$("#modalBody").html("The activity has been updated!");
-					$("#modalButtonCancel").hide();
-					$("#modalButtonRemove").hide();
-					$("#modalButtonOK").show();				
+					
+					// Method 
+					showModalBox();
+					$("#modalBody").html("The activity has been updated!");		
 					hidePopup();
 				}else{
-
-				$("#myModalLabel").html("");
+					showModalBox();
 				$("#modalBody").html("The day isn't long enough");
-				$("#modalButtonCancel").hide();
-				$("#modalButtonRemove").hide();
-				$("#modalButtonOK").show();
 				}
 			}else{ 
-				$("#myModalLabel").html("");
+				showModalBox();
 				$("#modalBody").html("Fill all of the boxes with valid data please ");
-				$("#modalButtonCancel").hide();
-				$("#modalButtonRemove").hide();
-				$("#modalButtonOK").show();
 			}
 		}else{
-			$("#myModalLabel").html("");
+			showModalBox();
 			$("#modalBody").html("Length must be a whole number");
-			$("#modalButtonCancel").hide();
-			$("#modalButtonRemove").hide();
-			$("#modalButtonOK").show();
 		}
 	});
 
