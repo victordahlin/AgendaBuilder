@@ -73,7 +73,7 @@ function showHelpPopup(){
 	text.append("</br></br>");
 	text.append("After creation of a day you may set the start time of a day to time in HH:MM format.");
 	text.append("</br></br>");
-	text.append("You cannot not set the start time causing the length of the agenda for that day to span multiple days.");
+	text.append("You cannot set the start time causing the length of the agenda for that day to span multiple days.");
 	text.append("</br>");
 	text.append("For the same reason you cannot drag an activity such that then end time of the day dragged exceeds midnight.");
 	text.append("</br></br>");
