@@ -18,23 +18,19 @@ this.addSortability = function(){
 			if(oldday == "activitiesContainer"){
 				oldday = null;
 				activityLength = model.parkedActivities[oldposition].getLength();
-			}
-			else{
+			}else{
 				activityLength = model.days[oldday]._activities[oldposition].getLength();
 			}
 			
 			if(model.checkEndTime(newday, activityLength, "receive")){
 				model.moveActivity(oldday, oldposition, newday, newposition); 
-			}
-			else {
+				ui.item.data("start_pos", newposition);
+			}else {
 				showModalBox();
-
+				$("#modalBody").html("This day ain't long enough!");
 				ui.item.appendTo(ui.sender);
 				model.moveActivity(oldday, oldposition, oldday, oldposition); 
-			}
-			
-			ui.item.data("start_pos", newposition);
-			
+			}						
 		},
 		
 		stop: function (event, ui) {
@@ -43,8 +39,7 @@ this.addSortability = function(){
 				var newday = $(this).attr("id"); 
 				var oldposition = ui.item.data("start_pos");
 				var newposition = ui.item.index();
-				model.moveActivity(oldday, oldposition, newday, newposition);                
-
+				model.moveActivity(oldday, oldposition, newday, newposition);
 				ui.item.data("start_pos", newposition); 					
 			}
 		},

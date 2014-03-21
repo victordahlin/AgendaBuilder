@@ -1,7 +1,10 @@
 //main controller
-//handles the main interaction beetween "screens" and popups, ie. showing and hiding containers.
+//handles the main interaction between "screens" and popups, ie. showing and hiding containers.
 
-
+/*
+Hides the popup in the left container in planner used for creating and editing of activities.
+The provided type filters which buttons are shown in the popup.  
+*/
 function showPopup(type){
 	$("#activitiesContainer").hide();
 	$("#addButtonContainer").hide();
@@ -19,7 +22,9 @@ function showPopup(type){
 	}
 
 }
-
+/*
+Hides the popup in the left container in planner used for creating and editing of activities.
+*/
 function hidePopup(type){	
 	$("#activitiesContainer").show();
 	$("#addButtonContainer").show();
@@ -28,13 +33,29 @@ function hidePopup(type){
 	$("#updateActivity").hide();
 }
 
+/*
+Shows the planner screen where all planning takes place and hides start page.
+*/
 function showPlanner(){
 	$("#planner").show();
 	$("#startPage").hide();	
 }
-
+/*
+Hides the planner screen where all planning takes place.
+*/
 function hidePlanner(){	
 	$("#planner").hide();
+}
+
+	/*
+	Start modal box and hide buttons 
+	*/
+function showModalBox() {
+	$('#modalBox').modal('toggle');
+	$("#myModalLabel").html("");
+	$("#modalButtonCancel").hide();
+	$("#modalButtonRemove").hide();
+	$("#modalButtonOK").show();
 }
 
 hidePlanner();

@@ -48,18 +48,6 @@ var ActivitiesController = function(view, model) {
 		showPopup("update");
 	});
 
-
-	/*
-	Start modal box and hide buttons 
-	*/
-	function showModalBox() {
-		$('#modalBox').modal('toggle');
-		$("#myModalLabel").html("");
-		$("#modalButtonCancel").hide();
-		$("#modalButtonRemove").hide();
-		$("#modalButtonOK").show();
-	}
-
 	var updatebutton = $("#updateActivity");
 	
 	//sets on-click listener to the update button in the "popup",
@@ -97,8 +85,8 @@ var ActivitiesController = function(view, model) {
 					model.saveUpdatedActivity(containerID);
 					
 					// Method 
-					showModalBox();
-					$("#modalBody").html("The activity has been updated!");		
+					/*showModalBox();
+					$("#modalBody").html("The activity has been updated!");		*/
 					hidePopup();
 				}else{
 					showModalBox();
@@ -118,7 +106,7 @@ var ActivitiesController = function(view, model) {
 	//sets on click-listener to the deletebutton in the popup
 	//brings forth a confirmation prompt.
 	deletebutton.click(function(){		
-		$('#modalBox').modal('toggle');
+		showModalBox();
 		$("#myModalLabel").html("Confirm remove activity");
 		$("#modalBody").html("Are you sure you want to remove this activity?");
 		$("#modalButtonOK").hide();
