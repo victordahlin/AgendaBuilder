@@ -1,6 +1,6 @@
 var ActivitiesController = function(view, model) {
 
-//On click listener for the add activity-button. Brings a popup.
+	//On click listener for the add activity-button. Brings a popup.
 	view.newActivity.click(function(){
 			$("#name").val("");
 			$("#length").val("");
@@ -9,8 +9,8 @@ var ActivitiesController = function(view, model) {
 			showPopup("create");
 	});
 
-//Makes the parked activity list sortable and thereby droppable.
-//When activity is received(dropped) in the list the model is updated by moveActivity()	
+	//Makes the parked activity list sortable and thereby droppable.
+	//When activity is received(dropped) in the list the model is updated by moveActivity()	
 	view.activities.sortable({
 			items : "> li",	
         	revert : true,
@@ -28,7 +28,7 @@ var ActivitiesController = function(view, model) {
             connectWith : ".dayActivity, #activitiesContainer"			
 	});
 
-//Sets double click-listeners to all activity list elements for update or deletion.
+	//Sets double click-listeners to all activity list elements for update or deletion.
 	$(document).on("dblclick", "li#activity.activityObject", function (){
 		var activityIndex = $(this).index();
 		var containerID = $(this).parent().attr("id");			
@@ -122,13 +122,15 @@ var ActivitiesController = function(view, model) {
 
 		
 	model.addObserver(this);
+	/* Upon notification from model:
+	If a new day is created, and "day" is provided as argument, the parked activity list is connect to the new days activity list. 
+	The default action is to refill parked activity list.
+	*/
 	this.update = function(arg){
 		
 		switch (arg) {
-		case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity, #activitiesContainer" );
-		break;
-		default : view.fillActivities(); 
-				$("#activitiesContainer").sortable( "refresh" );				
+			case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity, #activitiesContainer" );
+			break;
 		}
 	}
 }
