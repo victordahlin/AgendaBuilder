@@ -56,50 +56,62 @@ var ActivitiesController = function(view, model) {
 //activity in the model
 	updatebutton.on("click", function(){
 
+		var type = null;
 		var activityIndex = $("#popup").data("activityIndex");
 		var containerID = $("#popup").data("containerID");
 		if(containerID == "activitiesContainer"){										
 			var activity = model.parkedActivities[activityIndex];
+			type = "parked";
 
 		}else{				
 			var activity = model.days[containerID]._activities[activityIndex];
+			type = "receive";
 		}
 
 		var name = $("#name").val();
 		var length = $("#length").val();
 		var typeid = $("#typeid").val();
 		var description = $("#description").val();
+		var oldTime = activity.getLength();
 
 		if((parseFloat(length) == parseInt(length)) && !isNaN(length) && parseInt(length)<1440){
 
 			if(name!="" && length!="" && typeid!=""){
-				activity.setName(name);
-				activity.setLength(length);
-				activity.setTypeId(typeid);
-				activity.setDescription(description);
-				model.saveUpdatedActivity(containerID);
-				$("#myModalLabel").html("");
-				$("#modalBody").html("The activity has been updated!");
-				$("#modalButtonCancel").hide();
-				$("#modalButtonRemove").hide();
-				$("#modalButtonOK").show();				
-				hidePopup();
-			}else{
+				var time = parseInt(length) - parseInt(oldTime);
+				if (model.checkEndTime(containerID,time,type)){
+					activity.setName(name);
+					activity.setLength(length);
+					activity.setTypeId(typeid);
+					activity.setDescription(description);
+					model.saveUpdatedActivity(containerID);
+					$("#myModalLabel").html("");
+					$("#modalBody").html("The activity has been updated!");
+					$("#modalButtonCancel").hide();
+					$("#modalButtonRemove").hide();
+					$("#modalButtonOK").show();				
+					hidePopup();
+				}else{
 
 				$("#myModalLabel").html("");
-				$("#modalBody").html("Fill all of the boxes with valid data please");
+				$("#modalBody").html("The day isn't long enough");
 				$("#modalButtonCancel").hide();
 				$("#modalButtonRemove").hide();
 				$("#modalButtonOK").show();
-			}
-		}else{ 
+				}
+			}else{ 
 				$("#myModalLabel").html("");
 				$("#modalBody").html("Fill all of the boxes with valid data please ");
 				$("#modalButtonCancel").hide();
 				$("#modalButtonRemove").hide();
 				$("#modalButtonOK").show();
+			}
+		}else{
+			$("#myModalLabel").html("");
+			$("#modalBody").html("Length must be a whole number");
+			$("#modalButtonCancel").hide();
+			$("#modalButtonRemove").hide();
+			$("#modalButtonOK").show();
 		}
-
 	});
 
 	var deletebutton = $("#deleteActivity");
