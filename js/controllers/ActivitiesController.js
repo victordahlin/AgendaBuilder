@@ -73,7 +73,7 @@ var ActivitiesController = function(view, model) {
 		var description = $("#description").val();
 		var oldTime = activity.getLength();
 
-		if((parseFloat(length) == parseInt(length)) && !isNaN(length) && parseInt(length)<1440){
+		if((parseFloat(length) == parseInt(length)) && !isNaN(length) && parseInt(length)>=0){
 
 			if(name!="" && length!="" && typeid!=""){
 				var time = parseInt(length) - parseInt(oldTime);
@@ -98,7 +98,7 @@ var ActivitiesController = function(view, model) {
 			}
 		}else{
 			showModalBox();
-			$("#modalBody").html("Length must be a whole number");
+			$("#modalBody").html("Length must be a whole positive number");
 		}
 	});
 

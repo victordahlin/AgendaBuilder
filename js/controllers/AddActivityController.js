@@ -17,7 +17,7 @@ var AddActivityController = function(view, model) {
 			var typeid = $("#typeid").val();
 			var description = $("#description").val();
 
-   			if((parseFloat(length) == parseInt(length)) && !isNaN(length) && parseInt(length) < 1440){
+   			if((parseFloat(length) == parseInt(length)) && !isNaN(length) && parseInt(length) >= 0){
 
 				if(name!="" && length!="" && typeid!="" && typeid != null){
 					var act = new Activity(name,length,typeid,description);
