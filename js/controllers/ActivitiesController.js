@@ -118,6 +118,7 @@ var ActivitiesController = function(view, model) {
 	//sets on click-listener to the deletebutton in the popup
 	//brings forth a confirmation prompt.
 	deletebutton.click(function(){		
+		$('#modalBox').modal('toggle');
 		$("#myModalLabel").html("Confirm remove activity");
 		$("#modalBody").html("Are you sure you want to remove this activity?");
 		$("#modalButtonOK").hide();
@@ -128,10 +129,10 @@ var ActivitiesController = function(view, model) {
 	//sets on click-listener to the removebutton in the confirmation prompt
 	//if pressed activity is removed from the model.
 	$("#modalButtonRemove").click(function(){
-				var containerID = $("#popup").data("containerID");		
-				var activityIndex = $("#popup").data("activityIndex");		
-				model.removeActivity(containerID, activityIndex);
-				hidePopup();
+		var containerID = $("#popup").data("containerID");		
+		var activityIndex = $("#popup").data("activityIndex");		
+		model.removeActivity(containerID, activityIndex);
+		hidePopup();
 	});
 
 		
