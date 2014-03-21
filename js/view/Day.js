@@ -29,6 +29,7 @@ function DayView(container, model){
 		dayStartTimeBox.addClass("form-control input-sm pull-right");
 		dayStartTimeBox.attr("id","dayStartTimeBox");
 		dayStartTimeBox.attr("type","text");
+		dayStartTimeBox.data("dayID", dayID);
 		dayStartTime.append(label);
 		dayStartTime.append(dayStartTimeBox);
 		leftColumn.append(dayStartTime);		
@@ -154,7 +155,7 @@ function DayView(container, model){
 			}     	
 		
 			//fill box
-			var colors = ["#E0EBFF","#FFD6CC","#D6EAD6","#FFFF66"]
+			var colors = ["#E0EBFF","#FFD6CC","#CCCCCC","#99D6AD"]
 			for (var i=0; i < totalLength; i++){
 				context.beginPath();
 				context.rect(x, y, width, height);

@@ -74,7 +74,6 @@ function Day(startH,startM) {
 	// sets the start time to new value
 	this.setStart = function(startH,startM) {
 		this._start = startH * 60 + startM;
-		model.notifyObservers();
 	}
 
 	// returns the total length of the acitivities in 
@@ -92,8 +91,7 @@ function Day(startH,startM) {
 	this.getEnd = function() {
 		var end = this._start + this.getTotalLength();
 		var hour = Math.floor(end/60);
-		var min = end % 60;
-		//console.log(hour + " " + min);
+		var min = end % 60;		
 		if( hour < 10 ) {
 			hour = "0" + hour;
 		}
@@ -109,15 +107,13 @@ function Day(startH,startM) {
 	this.getStart = function() {
 		var hour = Math.floor(this._start/60);
 		var min  = this._start % 60;
-		//console.log(hour + " " + min);
 		if( hour < 10 ) {
 			hour = "0" + hour;
 		}
 
 		if( min < 10 ) {
 			min = "0" + min;
-		}
-		//console.log(hour);
+		}		
 		return  hour + ":" + min;
 	};
 	
@@ -229,25 +225,53 @@ function Model(){
 		
 	};
 
-	//model to notify once and only once at update of activity
-	this.saveUpdatedActivity = function (dayID) {
-		if(dayID == "activitiesContainer"){
+	//function to notify once and only once at update of activity in 
+	//container with ID: containerID
+	this.saveUpdatedActivity = function (containerID) {
+		if(containerID == "activitiesContainer"){
 			this.notifyObservers("parked");			
 		}else{
 			this.notifyObservers("day");
 		}
 	}
 
-	/*this.removeDay = function(dayID){
-		this.days.splice(dayID,1);
-	}*/
+	//returns true if the newtime doesn't make the day longer than 24 hours.
+	this.checkEndTime = function(dayID, newTime, type) {
+		var totalLength = 0;
+		var totalTime = 0;
 
-	this.removeActivity = function(dayID, position){
-		if(dayID == "activitiesContainer"){
+		if (type == "receive"){
+			var tmp = this.days[dayID].getEnd().split(":");
+			var endTime = tmp[0]*60 + parseInt(tmp[1]);
+			totalTime = endTime + parseInt(newTime);
+			
+		}
+		else if (type == "changeTime"){
+			totalLength = this.days[dayID].getTotalLength();
+			totalTime = newTime + totalLength;
+		}
+		if((totalTime) < 60*24 ){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	//model to notify once and only once at the change of start time
+	this.changeStartTime = function (dayID,startH,startM) {
+		this.days[dayID].setStart(parseInt(startH),parseInt(startM));
+		this.notifyObservers("day");
+	}
+	
+	//Helper function to remove activity with provided containerID (day or parked) and activity position/index
+	//and to do a single notification after this	
+	this.removeActivity = function(containerID, position){
+		if(containerID == "activitiesContainer"){
 			this.removeParkedActivity(position);
 			this.notifyObservers("parked");
 		}else{
-			this.days[dayID]._removeActivity(position);
+			this.days[containerID]._removeActivity(position);
 			this.notifyObservers("day");
 		}		
 	}
