@@ -37,8 +37,7 @@ function DayView(container, model){
 		dayStartTimeBox.data("dayID", dayID);
 		dayStartTime.append(label);
 		dayStartTime.append(dayStartTimeBox);
-		leftColumn.append(dayStartTime);		
-
+		leftColumn.append(dayStartTime);
 
 		//end time 
 		var dayEndTime = $("<div>");
@@ -64,19 +63,10 @@ function DayView(container, model){
 		var totalTime = $("<span>");
 		totalTime.addClass("pull-right");
 		totalTime.attr("id", "dayTotalLengthBox");
-		//totalTime.html("0");
 
 		dayTotalLength.append(label);
 		dayTotalLength.append(totalTime);
 		leftColumn.append(dayTotalLength);
-				
-
-		/*var deleteDayButton = $("<button>");
-		deleteDayButton.attr("type","button");
-		deleteDayButton.addClass("btn btn-sm btn-warning");
-		deleteDayButton.attr("id","deleteDay");
-		deleteDayButton.val(dayID);
-		deleteDayButton.html("Delete");*/
 
 
 		var dayBreaks = $("<div>");
@@ -222,13 +212,14 @@ function DayView(container, model){
 	
 	model.addObserver(this);	
 	this.update = function(arg){
-	if(arg=="moved" || arg=="day"){
-		this.dayInfoBox();	
-		this.dayInfoBoxStatus();
-		this.fillDayActivity();	
-	}
+		console.log(arg);
+		if(arg=="moved" || arg=="day"){
+			this.dayInfoBox();	
+			this.dayInfoBoxStatus();
+			this.fillDayActivity();	
+		}
 	}	
 	
-	this.createDay(); //init first day
-	model.addDay(); 
+	//this.createDay(); //init first day
+	//model.addDay(); 
 }
