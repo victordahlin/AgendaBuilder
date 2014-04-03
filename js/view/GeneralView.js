@@ -4,7 +4,7 @@ function GeneralView(view, model){
 	this.update = function(arg){
 		console.log(arg);
 
-		if(arg=="day"){
+		if(arg=="createDay"){
 			view.createDay();
 
 		} 

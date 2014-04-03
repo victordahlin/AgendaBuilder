@@ -206,22 +206,22 @@ function Model(){
 	// to move a parked activity to let's say day 0 you set oldday to null
 	// and new day to 0
 	this.moveActivity = function(oldday, oldposition, newday, newposition) {
-		//console.log("oldday " + oldday + " oldposition " + oldposition + " newday " + newday-1 + " newposition " + newposition);
+		console.log("oldday " + oldday + " oldposition " + oldposition + " newday " + newday + " newposition " + newposition);
 
-		if(oldday !== null && oldday == newday-1) {
+		if(oldday !== null && oldday == newday) {
 			this.days[oldday]._moveActivity(oldposition,newposition);
-		}else if(oldday == null && newday-1 == null) {
+		}else if(oldday == null && newday == null) {
 			var activity = this.removeParkedActivity(oldposition);
 			this.addParkedActivity(activity,newposition);
 		}else if(oldday == null) {
 			var activity = this.removeParkedActivity(oldposition);
-			this.days[newday-1]._addActivity(activity,newposition);
-		}else if(newday-1 == null) {
+			this.days[newday]._addActivity(activity,newposition);
+		}else if(newday == null) {
 			var activity = this.days[oldday]._removeActivity(oldposition);
 			this.addParkedActivity(activity);
 		} else {
 			var activity = this.days[oldday]._removeActivity(oldposition);
-			this.days[newday-1]._addActivity(activity,newposition);
+			this.days[newday]._addActivity(activity,newposition);
 		}
 		this.notifyObservers("moved");
 		
@@ -243,7 +243,7 @@ function Model(){
 		var totalTime = 0;
 
 		if (type == "receive"){
-			var tmp = this.days[dayID-1].getEnd().split(":");
+			var tmp = this.days[dayID].getEnd().split(":");
 			var endTime = tmp[0]*60 + parseInt(tmp[1]);
 			totalTime = endTime + parseInt(newTime);
 			

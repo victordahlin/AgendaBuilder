@@ -4,7 +4,7 @@ function DayView(container, model){
 	this.addDayButtonBox = $("#addDayButton");
 	
 	this.createDay = function(){
-		var dayID = model.days.length;
+		var dayID = model.days.length-1;
 
 		var dayObject = $("<div>");
 		dayObject.attr("id", dayID);
@@ -96,7 +96,6 @@ function DayView(container, model){
 	}
 		
 	this.dayInfoBox = function() {
-	
 		for(var j = 0; j< this.model.days.length; j++){
 			var dayInfo = $("#"+j+" .dayInfo");			
 			dayInfo.find("#dayStartTimeBox").attr("value",this.model.days[j].getStart());
@@ -106,10 +105,9 @@ function DayView(container, model){
 	}
 	
 	this.dayInfoBoxStatus = function() {
-		
 		for(var j = 0; j< this.model.days.length; j++){
 			var canvas = $("#"+j+" .canvasBox");
-			console.log(canvas);
+
 			var context = canvas.get(0).getContext("2d");
 			var activityArray = this.model.days[j]._activities; 
 			
