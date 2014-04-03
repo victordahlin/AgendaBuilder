@@ -206,8 +206,7 @@ function Model(){
 	// to move a parked activity to let's say day 0 you set oldday to null
 	// and new day to 0
 	this.moveActivity = function(oldday, oldposition, newday, newposition) {
-		console.log("oldday " + oldday + " oldposition " + oldposition + " newday " + newday + " newposition " + newposition);
-
+		
 		if(oldday !== null && oldday == newday) {
 			this.days[oldday]._moveActivity(oldposition,newposition);
 		}else if(oldday == null && newday == null) {
