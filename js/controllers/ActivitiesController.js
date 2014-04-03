@@ -1,4 +1,7 @@
 var ActivitiesController = function(view, model) {
+	var updatebutton = $("#updateActivity");
+	var deletebutton = $("#deleteActivity");
+
 
 	//On click listener for the add activity-button. Brings a popup.
 	view.newActivity.click(function(){
@@ -47,14 +50,11 @@ var ActivitiesController = function(view, model) {
 		$("#description").val(activity.getDescription());
 		showPopup("update");
 	});
-
-	var updatebutton = $("#updateActivity");
 	
 	//sets on-click listener to the update button in the "popup",
 	//when clicked, data i validated and if valid saved to the 
 	//activity in the model
 	updatebutton.on("click", function(){
-
 		var type = null;
 		var activityIndex = $("#popup").data("activityIndex");
 		var containerID = $("#popup").data("containerID");
@@ -74,7 +74,6 @@ var ActivitiesController = function(view, model) {
 		var oldTime = activity.getLength();
 
 		if((parseFloat(length) == parseInt(length)) && !isNaN(length) && parseInt(length)>=0){
-
 			if(name!="" && length!="" && typeid!=""){
 				var time = parseInt(length) - parseInt(oldTime);
 				if (model.checkEndTime(containerID,time,type)){
@@ -99,7 +98,6 @@ var ActivitiesController = function(view, model) {
 		}
 	});
 
-	var deletebutton = $("#deleteActivity");
 	//sets on click-listener to the delete button in the popup
 	//brings forth a confirmation prompt.
 	deletebutton.click(function(){		
@@ -119,15 +117,14 @@ var ActivitiesController = function(view, model) {
 		model.removeActivity(containerID, activityIndex);
 		hidePopup();
 	});
-
 		
-	model.addObserver(this);
+
 	/* Upon notification from model:
 	If a new day is created, and "day" is provided as argument, the parked activity list is connect to the new days activity list. 
 	The default action is to refill parked activity list.
-	*/
-	this.update = function(arg){
-		
+	*/	
+	model.addObserver(this);
+	this.update = function(arg){		
 		switch (arg) {
 			case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity, #activitiesContainer" );
 			break;

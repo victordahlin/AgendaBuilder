@@ -5,11 +5,12 @@ function DayView(container, model){
 	
 	this.createDay = function(){
 		var dayID = model.days.length;
+
 		var dayObject = $("<div>");
 		dayObject.attr("id", dayID);
 		var dayLabel = $("<label>");
 		dayLabel.attr("id", "dayLabel");
-		dayLabel.text("Day "+(dayID+1));
+		dayLabel.text("Day "+(dayID));
 		dayObject.append(dayLabel);
 		dayObject.addClass("dayObject col-xs-12 col-sm-6 col-md-4");		
 		
@@ -107,12 +108,9 @@ function DayView(container, model){
 	this.dayInfoBoxStatus = function() {
 		
 		for(var j = 0; j< this.model.days.length; j++){
-			
-
 			var canvas = $("#"+j+" .canvasBox");
+			console.log(canvas);
 			var context = canvas.get(0).getContext("2d");
-			
-
 			var activityArray = this.model.days[j]._activities; 
 			
 			//total box size
@@ -128,8 +126,7 @@ function DayView(container, model){
 
 			var totalLength = model.days[j].getTotalLength();
 
-			var array = [0,0,0,0];
-		
+			var array = [0,0,0,0];		
 			for (var i = 0; i < activityArray.length; i++ ){
 				var type = activityArray[i].getType();
 
@@ -172,8 +169,7 @@ function DayView(container, model){
 		}
 	}
 
-	this.fillDayActivity = function(){
-	
+	this.fillDayActivity = function(){	
 		for(var j = 0; j< this.model.days.length; j++){
 		
 			var dayActivity = $("#"+j+".dayActivity");
@@ -212,14 +208,11 @@ function DayView(container, model){
 	
 	model.addObserver(this);	
 	this.update = function(arg){
-		console.log(arg);
-		if(arg=="moved" || arg=="day"){
+		//console.log(arg);
+		if(arg=="moved"){//|| arg=="day"){
 			this.dayInfoBox();	
 			this.dayInfoBoxStatus();
 			this.fillDayActivity();	
 		}
-	}	
-	
-	//this.createDay(); //init first day
-	//model.addDay(); 
+	}
 }
