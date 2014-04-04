@@ -7,7 +7,6 @@ $(function() {
 	var activities = new Activities($("#activities"), model);
 	var addActivity = new AddActivity($("#popup"), model);
 	var dayView = new DayView($("#dayContainer"), model);
-	var general = new GeneralView(dayView, model);
 
 	// Controllers
 	var activitiesController = new ActivitiesController(activities, model);
