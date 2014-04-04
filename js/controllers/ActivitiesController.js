@@ -125,9 +125,8 @@ var ActivitiesController = function(view, model) {
 	*/	
 	model.addObserver(this);
 	this.update = function(arg){		
-		switch (arg) {
-			case "day" : $( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity, #activitiesContainer" );
-			break;
+		if (arg == "dayCreated"){
+			$( "#activitiesContainer" ).sortable( "option", "connectWith", ".dayActivity, #activitiesContainer" );
 		}
 	}
 }

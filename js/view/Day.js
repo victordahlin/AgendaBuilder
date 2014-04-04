@@ -168,12 +168,13 @@ function DayView(container, model){
 	}
 
 	this.fillDayActivity = function(){	
+		container.empty();
 		for(var j = 0; j< this.model.days.length; j++){
-		
+			this.createDay(j);
 			var dayActivity = $("#"+j+".dayActivity");
 			var startTime = this.model.days[j].getStart().split(":");
-			startTime[0] = parseInt(startTime[0]);
-			startTime[1] = parseInt(startTime[1]);
+			startTime = parseInt(startTime[0])*60+parseInt(startTime[1]);
+			
 			 			
 			dayActivity.empty();
 			var array = this.model.days[j]._activities;			
@@ -203,19 +204,16 @@ function DayView(container, model){
 				div.append(nameElement);
 				dayActivity.append(div);
 				
-				startTime[0]+= Math.floor((time/60)+(startTime[1]/60));
-				startTime[1]=(startTime[1]+time)%60;				
+				startTime+= time;				
 			}
 		}
-		
 	}
 	
 	var formatTime = function(startTime){
-		
-		var hh = startTime[0];
-		var min = startTime[1];		
-		if(hh < 10) hh = "0"+startTime[0];
-		if(min < 10) min = "0"+startTime[1];
+		var hh = Math.floor(startTime/60);
+		var min = startTime%60;		
+		if(hh < 10) hh = "0"+hh;
+		if(min < 10) min = "0"+min;
 		
 		return hh+":"+min;
 	}
@@ -224,9 +222,9 @@ function DayView(container, model){
 	this.update = function(arg){
 		
 		if(arg=="moved"|| arg=="day"){
+			this.fillDayActivity();
 			this.dayInfoBox();	
-			this.dayInfoBoxStatus();
-			this.fillDayActivity();	
+			this.dayInfoBoxStatus();	
 		}
 	}
 }

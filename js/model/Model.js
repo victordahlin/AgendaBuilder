@@ -174,7 +174,8 @@ function Model(){
 			day = new Day(8,0);
 		}
 		this.days.push(day);
-		//this.notifyObservers("day");
+		this.notifyObservers("day");
+		this.notifyObservers("dayCreated");		
 		return day;
 	};
 	
@@ -235,7 +236,7 @@ function Model(){
 			this.notifyObservers("day");
 		}
 	}
-
+	
 	//returns true if the newtime doesn't make the day longer than 24 hours.
 	this.checkEndTime = function(dayID, newTime, type) {
 		var totalLength = 0;

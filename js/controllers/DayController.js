@@ -67,11 +67,11 @@ var DayController = function(view,model) {
 		}
 	});
 
-	this.addSortability();
-
+	
 	model.addObserver(this);
+	
 	this.update = function(arg){
-		if(arg=="day") this.addSortability();
+		this.addSortability();
 	}
 
 }
