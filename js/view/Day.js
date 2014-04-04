@@ -1,8 +1,11 @@
 function DayView(container, model){
-	this.model=model;	
+	this.model=model;
+	
 	this.addDayButtonBox = $("#addDayButton");
 	
 	this.createDay = function(dayID){
+		//var dayID = model.days.length-1;
+
 		var dayObject = $("<div>");
 		dayObject.attr("id", dayID);
 		var dayLabel = $("<label>");
@@ -118,6 +121,7 @@ function DayView(container, model){
 			var x = 5;
 			var y = 0;
 
+
 			var totalLength = model.days[j].getTotalLength();
 
 			var array = [0,0,0,0];		
@@ -163,20 +167,15 @@ function DayView(container, model){
 		}
 	}
 
-	// Render every day with info in the container
-	this.fillDayActivity = function(){
-	container.empty();	// Clear all in #dayContainer
-
-		for(var j = 0; j< this.model.days.length; j++){			
-			this.createDay(j);	
-
+	this.fillDayActivity = function(){	
+		for(var j = 0; j< this.model.days.length; j++){
+		
 			var dayActivity = $("#"+j+".dayActivity");
 			var startTime = this.model.days[j].getStart().split(":");
 			startTime[0] = parseInt(startTime[0]);
 			startTime[1] = parseInt(startTime[1]);
 			 			
-			//dayActivity.empty();
-
+			dayActivity.empty();
 			var array = this.model.days[j]._activities;			
 			for( var i = 0; i < array.length; i++ ) {
 				var div = $("<li>");
@@ -205,12 +204,14 @@ function DayView(container, model){
 				dayActivity.append(div);
 				
 				startTime[0]+= Math.floor((time/60)+(startTime[1]/60));
-				startTime[1]=(startTime[1]+time)%60;			
+				startTime[1]=(startTime[1]+time)%60;				
 			}
-		}		
+		}
+		
 	}
 	
-	var formatTime = function(startTime){		
+	var formatTime = function(startTime){
+		
 		var hh = startTime[0];
 		var min = startTime[1];		
 		if(hh < 10) hh = "0"+startTime[0];
@@ -223,10 +224,9 @@ function DayView(container, model){
 	this.update = function(arg){
 		
 		if(arg=="moved"|| arg=="day"){
-			this.fillDayActivity();	
 			this.dayInfoBox();	
 			this.dayInfoBoxStatus();
-			
+			this.fillDayActivity();	
 		}
 	}
 }
