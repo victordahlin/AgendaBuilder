@@ -167,16 +167,15 @@ function DayView(container, model){
 		}
 	}
 
+	// Clear and render days
 	this.fillDayActivity = function(){	
 		container.empty();
 		for(var j = 0; j< this.model.days.length; j++){
 			this.createDay(j);
 			var dayActivity = $("#"+j+".dayActivity");
 			var startTime = this.model.days[j].getStart().split(":");
-			startTime = parseInt(startTime[0])*60+parseInt(startTime[1]);
-			
-			 			
-			dayActivity.empty();
+			startTime = parseInt(startTime[0])*60+parseInt(startTime[1]);			
+
 			var array = this.model.days[j]._activities;			
 			for( var i = 0; i < array.length; i++ ) {
 				var div = $("<li>");
@@ -209,6 +208,7 @@ function DayView(container, model){
 		}
 	}
 	
+	// Return correct time
 	var formatTime = function(startTime){
 		var hh = Math.floor(startTime/60);
 		var min = startTime%60;		
